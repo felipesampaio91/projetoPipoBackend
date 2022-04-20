@@ -1,0 +1,41 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Projeto.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Projeto.Infra.Data.Mappings
+{
+    public class FuncionarioBeneficioMap : IEntityTypeConfiguration<FuncionarioBeneficio>
+    {
+        public void Configure(EntityTypeBuilder<FuncionarioBeneficio> builder)
+        {
+            builder.ToTable("FuncionarioBeneficio");
+
+            builder.HasKey(funcionarioBeneficio => funcionarioBeneficio.Id);
+
+            builder.Property(funcionarioBeneficio => funcionarioBeneficio.Id)
+            .HasColumnName("Id");
+
+            builder.Property(funcionarioBeneficio => funcionarioBeneficio.IdFuncionario)
+            .HasColumnName("IdCliente");
+
+            builder.Property(funcionarioBeneficio => funcionarioBeneficio.IdBeneficio)
+            .HasColumnName("IdBeneficio");
+
+            builder.Property(funcionarioBeneficio => funcionarioBeneficio.DataInclusao)
+           .HasColumnName("DataInclusao")
+           .HasColumnType("datetimeoffset")
+           .IsRequired();
+
+            builder.HasOne(funcionarioBeneficio => funcionarioBeneficio.Funcionario)
+                .WithMany(funcionario => funcionario.FuncionarioBeneficios)
+                .HasForeignKey(funcionarioBeneficio => funcionarioBeneficio.IdFuncionario);
+
+            builder.HasOne(funcionarioBeneficio => funcionarioBeneficio.Beneficio)
+                .WithMany(beneficio => beneficio.FuncionarioBeneficios)
+                .HasForeignKey(funcionarioBeneficio => funcionarioBeneficio.IdBeneficio);
+        }
+    }
+}
