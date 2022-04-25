@@ -19,7 +19,7 @@ namespace Projeto.Domain.Services
 
         public override void Insert(Cliente obj)
         {
-            if (clienteRepository.GetByCnpj(obj.CNPJ) == null)
+            if (clienteRepository.GetByCnpj(obj.Cnpj) == null)
             {
                 clienteRepository.Insert(obj);
             }

@@ -23,7 +23,7 @@ namespace Projeto.Infra.Data.Mappings
             .HasMaxLength(60)
             .IsRequired();
 
-            builder.Property(funcionario => funcionario.CPF)
+            builder.Property(funcionario => funcionario.Cpf)
             .HasColumnName("Cpf")
             .HasMaxLength(11)
             .IsRequired();

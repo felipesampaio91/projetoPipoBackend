@@ -8,7 +8,7 @@ namespace Projeto.Domain.Entities
     {
         public int IdCliente { get; set; }
         public string  Nome { get; set; }
-        public string CNPJ { get; set; }
+        public string Cnpj { get; set; }
         public DateTimeOffset DataInclusao { get; set; }
 
 

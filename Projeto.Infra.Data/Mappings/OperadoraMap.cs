@@ -23,7 +23,7 @@ namespace Projeto.Infra.Data.Mappings
             .HasMaxLength(50)
             .IsRequired();
 
-            builder.Property(operadora => operadora.CNPJ)
+            builder.Property(operadora => operadora.Cnpj)
             .HasColumnName("Cnpj")
             .HasMaxLength(25)
             .IsRequired();

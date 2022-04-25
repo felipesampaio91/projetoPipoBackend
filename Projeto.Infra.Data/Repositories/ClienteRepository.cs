@@ -21,7 +21,7 @@ namespace Projeto.Infra.Data.Repositories
 
         public Cliente GetByCnpj(string cnpj)
         {
-            return dataContext.Cliente.FirstOrDefault(f => f.CNPJ.Equals(cnpj));
+            return dataContext.Cliente.FirstOrDefault(f => f.Cnpj.Equals(cnpj));
         }
     }
 }

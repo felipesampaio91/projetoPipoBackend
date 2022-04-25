@@ -21,7 +21,7 @@ namespace Projeto.Infra.Data.Repositories
 
         public Funcionario GetByCpf(string cpf)
         {
-            return dataContext.Funcionario.FirstOrDefault(f => f.CPF.Equals(cpf));
+            return dataContext.Funcionario.FirstOrDefault(f => f.Cpf.Equals(cpf));
         }
     }
 }

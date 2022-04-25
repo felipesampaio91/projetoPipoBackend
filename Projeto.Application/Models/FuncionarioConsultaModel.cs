@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Projeto.Domain.Entities
+namespace Projeto.Application.Models
 {
-    public class Funcionario
+    public class FuncionarioConsultaModel
     {
         public int IdFuncionario { get; set; }
         public string Nome { get; set; }
@@ -14,13 +14,7 @@ namespace Projeto.Domain.Entities
         public string Email { get; set; }
         public decimal Peso { get; set; }
         public decimal Altura { get; set; }
-        public DateTimeOffset DataInclusao { get; set; }
-        public int IdCliente { get; set; }
 
-
-        public Cliente Cliente { get; set; }
-        public List<FuncionarioBeneficio> FuncionarioBeneficios { get; set; }
-
-
+        public ClienteConsultaModel Cliente { get; set; }
     }
 }

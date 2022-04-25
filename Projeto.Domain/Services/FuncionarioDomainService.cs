@@ -19,7 +19,7 @@ namespace Projeto.Domain.Services
 
         public override void Insert(Funcionario obj)
         {
-            if (funcionarioRepository.GetByCpf(obj.CPF) == null)
+            if (funcionarioRepository.GetByCpf(obj.Cpf) == null)
             {
                 funcionarioRepository.Insert(obj);
             }

@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/TabelaOperadora.sql
+/TabelaFuncionarioBeneficio.sql
+/TabelaFuncionario.sql
+/TabelaClienteBeneficio.sql
+/TabelaCliente.sql
+/TabelaBeneficio.sql
