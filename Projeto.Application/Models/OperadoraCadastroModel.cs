@@ -15,5 +15,8 @@ namespace Projeto.Application.Models
         [RegularExpression("^[0-9]{14}$", ErrorMessage = "Por favor, informe um CNPJ válido")]
         [Required(ErrorMessage = "Informe o CNPJ da operadora.")]
         public string Cnpj { get; set; }
+
+        [Required(ErrorMessage = "Informe a data de inclusão da operadora.")]
+        public DateTimeOffset DataInclusao { get; set; }
     }
 }

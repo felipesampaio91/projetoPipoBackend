@@ -6,7 +6,7 @@ namespace Projeto.Domain.Entities
 {
     public class ClienteBeneficio
     {
-        public int Id { get; set; }
+        public int IdClienteBeneficio { get; set; }
         public int IdCliente { get; set; }
         public int IdBeneficio { get; set; }
         public Cliente Cliente { get; set; }

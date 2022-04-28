@@ -21,7 +21,8 @@ namespace Projeto.Application.Services
         {
             var operadora = new Operadora();
             operadora.Nome = model.Nome;
-            operadora.Cnpj = model.Nome;
+            operadora.Cnpj = model.Cnpj;
+            operadora.DataInclusao = DateTime.UtcNow;
 
             operadoraDomainService.Insert(operadora);
         }
@@ -31,7 +32,7 @@ namespace Projeto.Application.Services
             var operadora = new Operadora();
             operadora.IdOperadora = model.IdOperadora;
             operadora.Nome = model.Nome;
-            operadora.Cnpj = model.Nome;
+            operadora.Cnpj = model.Cnpj;
 
             operadoraDomainService.Update(operadora);
         }
@@ -53,6 +54,7 @@ namespace Projeto.Application.Services
                 model.IdOperadora = item.IdOperadora;
                 model.Nome = item.Nome;
                 model.Cnpj = item.Cnpj;
+                model.DataInclusao = item.DataInclusao;
 
                 lista.Add(model);
             }
@@ -68,6 +70,7 @@ namespace Projeto.Application.Services
             model.IdOperadora = operadora.IdOperadora;
             model.Nome = operadora.Nome;
             model.Cnpj = operadora.Cnpj;
+            model.DataInclusao = operadora.DataInclusao;
 
             return model;
         }

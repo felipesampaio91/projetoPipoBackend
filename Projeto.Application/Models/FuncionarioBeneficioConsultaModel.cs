@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Projeto.Domain.Entities
+namespace Projeto.Application.Models
 {
-    public class FuncionarioBeneficio
+    public class FuncionarioBeneficioConsultaModel
     {
         public int IdFuncionarioBeneficio { get; set; }
         public int IdFuncionario { get; set; }
         public int IdBeneficio { get; set; }
-        public Funcionario Funcionario { get; set; }
-        public Beneficio Beneficio { get; set; }
         public DateTimeOffset DataInclusao { get; set; }
     }
 }

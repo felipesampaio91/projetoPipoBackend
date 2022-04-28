@@ -25,6 +25,7 @@ namespace Projeto.Application.Services
             funcionario.DataAdmissao = model.DataAdmissao;
             funcionario.Endereco = model.Endereco;
             funcionario.IdCliente = model.IdCliente;
+            funcionario.DataInclusao = DateTime.UtcNow;
 
             funcionarioDomainService.Insert(funcionario);
         }
@@ -64,6 +65,14 @@ namespace Projeto.Application.Services
                 model.Email = item.Email;
                 model.Peso = item.Peso;
                 model.Altura = item.Altura;
+                model.DataInclusao = item.DataInclusao;
+
+                model.Cliente = new ClienteConsultaModel();
+                model.Cliente.IdCliente = item.Cliente.IdCliente;
+                model.Cliente.Nome = item.Cliente.Nome;
+                model.Cliente.Cnpj = item.Cliente.Cnpj;
+                model.Cliente.DataInclusao = item.Cliente.DataInclusao;
+
 
                 lista.Add(model);
 
@@ -85,9 +94,15 @@ namespace Projeto.Application.Services
             model.Email = funcionario.Email;
             model.Peso = funcionario.Peso;
             model.Altura = funcionario.Altura;
+            model.DataInclusao = funcionario.DataInclusao;
+
+            model.Cliente = new ClienteConsultaModel();
+            model.Cliente.IdCliente = funcionario.Cliente.IdCliente;
+            model.Cliente.Nome = funcionario.Cliente.Nome;
+            model.Cliente.Cnpj = funcionario.Cliente.Cnpj;
+            model.Cliente.DataInclusao = funcionario.Cliente.DataInclusao;
 
             return model;
-
         }
     }
 }

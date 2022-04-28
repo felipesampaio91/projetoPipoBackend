@@ -6,8 +6,12 @@ namespace Projeto.Application.Models
 {
     public class BeneficioConsultaModel
     {
-        public int IdCliente { get; set; }
+        public int IdBeneficio { get; set; }
         public string Nome { get; set; }
-        public string Cnpj { get; set; }
+        public int IdOperadora { get; set; }
+        public DateTimeOffset DataInclusao { get; set; }
+
+        public OperadoraConsultaModel Operadora { get; set; }
+
     }
 }

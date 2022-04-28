@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Projeto.Application.Contracts;
+using Projeto.Application.Services;
+using Projeto.Domain.Contracts.Repositories;
+using Projeto.Domain.Contracts.Services;
+using Projeto.Domain.Services;
+using Projeto.Infra.Data.Contexts;
 using Projeto.Infra.Data.Repositories;
 
 namespace Projeto.Presentation
@@ -57,6 +64,23 @@ namespace Projeto.Presentation
                         }
                     });
             });
+
+            services.AddDbContext<DataContext>(d => d.UseSqlServer(Configuration.GetConnectionString("Pipo")));
+
+            services.AddTransient<IOperadoraApplicationService, OperadoraApplicationService>();
+            services.AddTransient<IClienteApplicationService, ClienteApplicationService>();
+            services.AddTransient<IBeneficioApplicationService, BeneficioApplicationService>();
+            services.AddTransient<IFuncionarioApplicationService, FuncionarioApplicationService>();
+
+            services.AddTransient<IOperadoraDomainService, OperadoraDomainService>();
+            services.AddTransient<IClienteDomainService, ClienteDomainService>();
+            services.AddTransient<IBeneficioDomainService, BeneficioDomainService>();
+            services.AddTransient<IFuncionarioDomainService, FuncionarioDomainService>();
+
+            services.AddTransient<IOperadoraRepository, OperadoraRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IBeneficioRepository, BeneficioRepository>();
+            services.AddTransient<IFuncionarioRepository, FuncionarioRepository>();
 
         }
 

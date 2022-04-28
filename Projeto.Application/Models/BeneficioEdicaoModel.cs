@@ -19,5 +19,9 @@ namespace Projeto.Application.Models
         [RegularExpression("^[0-9]{14}$", ErrorMessage = "Por favor, informe um CNPJ válido")]
         [Required(ErrorMessage = "Informe o CNPJ do cliente.")]
         public string Cnpj { get; set; }
+
+        [RegularExpression("^[0-9]{1,9}$", ErrorMessage = "Por favor, informe um ID válido")]
+        [Required(ErrorMessage = "Informe o ID do benefício.")]
+        public int IdBeneficio { get; set; }
     }
 }

@@ -9,5 +9,7 @@ namespace Projeto.Application.Models
         public int IdOperadora { get; set; }
         public string Nome { get; set; }
         public string Cnpj { get; set; }
+        public DateTimeOffset DataInclusao { get; set; }
+
     }
 }

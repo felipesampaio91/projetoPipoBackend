@@ -13,10 +13,10 @@ namespace Projeto.Infra.Data.Mappings
         {
             builder.ToTable("ClienteBeneficio");
 
-            builder.HasKey(clienteBeneficio => clienteBeneficio.Id);
+            builder.HasKey(clienteBeneficio => clienteBeneficio.IdClienteBeneficio);
 
-            builder.Property(clienteBeneficio => clienteBeneficio.Id)
-            .HasColumnName("Id");
+            builder.Property(clienteBeneficio => clienteBeneficio.IdClienteBeneficio)
+            .HasColumnName("IdClienteBeneficio");
 
             builder.Property(clienteBeneficio => clienteBeneficio.IdCliente)
             .HasColumnName("IdCliente");

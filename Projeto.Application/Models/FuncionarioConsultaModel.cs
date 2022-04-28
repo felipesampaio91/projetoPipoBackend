@@ -14,6 +14,8 @@ namespace Projeto.Application.Models
         public string Email { get; set; }
         public decimal Peso { get; set; }
         public decimal Altura { get; set; }
+        public DateTimeOffset DataInclusao { get; set; }
+
 
         public ClienteConsultaModel Cliente { get; set; }
     }
