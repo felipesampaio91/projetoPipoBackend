@@ -14,17 +14,74 @@ namespace Projeto.Presentation.Controllers
     public class FuncionarioBeneficioController : ControllerBase
     {
         private readonly IFuncionarioBeneficioApplicationService funcionarioBeneficioAppicationService;
+        private readonly IBeneficioApplicationService beneficioAppicationService;
+        private readonly IFuncionarioApplicationService funcionarioAppicationService;
 
-        public FuncionarioBeneficioController(IFuncionarioBeneficioApplicationService funcionarioBeneficioAppicationService)
+        public FuncionarioBeneficioController(
+            IFuncionarioBeneficioApplicationService funcionarioBeneficioAppicationService,
+            IBeneficioApplicationService beneficioAppicationService,
+            IFuncionarioApplicationService funcionarioAppicationService)
+
         {
             this.funcionarioBeneficioAppicationService = funcionarioBeneficioAppicationService;
+            this.beneficioAppicationService = beneficioAppicationService;
+            this.funcionarioAppicationService = funcionarioAppicationService;
         }
+
+       
 
         [HttpPost]
         public IActionResult Post(FuncionarioBeneficioCadastroModel model)
         {
             try
             {
+                var benefico = beneficioAppicationService.GetById(model.IdBeneficio);
+                var funcionario = funcionarioAppicationService.GetById(model.IdFuncionario);
+
+                switch (benefico.Nome)
+                {
+                    case "Plano de Saúde NorteEuropa":
+                        if(funcionario.DataAdmissao == null || funcionario.Email == null)
+                        {
+                            throw new Exception("Para este benefício os campos Data de admissão e e-mail devem estar preenchidos no cadastro do funcionário.");
+                        }
+                        break;
+
+                    case "Plano de saúde Pampulha Intermédica":
+                        if (funcionario.DataAdmissao == null || funcionario.Endereco == null)
+                        {
+                            throw new Exception("Para este benefício os campos Data de admissão e endereço devem estar preenchidos no cadastro do funcionário.");
+                        }
+                        break;
+
+                    case "Plano odontológico Dental Sorriso":
+                        if (funcionario.Peso == 0 || funcionario.Altura == 0)
+                        {
+                            throw new Exception("Para este benefício os campos peso e altura devem estar preenchidos no cadastro do funcionário.");
+                        }
+                        break;
+
+                    case "Plano de saúde mental Mente Sã, Corpo São":
+                        if (funcionario.HorasMeditadas == null)
+                        {
+                            throw new Exception("Para este benefício o campo horas meditadas deve estar preenchido no cadastro do funcionário.");
+                        }
+                        break;
+                }
+
+
+
+                //if(benefico.Nome == "Plano de Saúde NorteEuropa")
+                //{
+                //    var funcionario = funcionarioAppicationService.GetById(model.IdFuncionario);
+
+
+                //}
+
+
+
+
+
                 funcionarioBeneficioAppicationService.Insert(model);
 
                 var funcionarioBeneficio = new FuncionarioBeneficio();

@@ -35,11 +35,11 @@ namespace Projeto.Application.Models
         public string Email { get; set; }
 
         //[RegularExpression("^[0-9.,]{3,5}$", ErrorMessage = "Por favor, informe um peso válido")]
-        public decimal Peso { get; set; }
+        public decimal? Peso { get; set; }
 
         //[RegularExpression("^[0-9.,]{3,4}$", ErrorMessage = "Por favor, informe uma altura válida")]
-        public decimal Altura { get; set; }
-        public decimal HorasMeditadas { get; set; }
+        public decimal? Altura { get; set; }
+        public decimal? HorasMeditadas { get; set; }
 
         [RegularExpression("^[0-9]{1,9}$", ErrorMessage = "Por favor, informe um ID válido")]
         [Required(ErrorMessage = "Informe o ID do cliente.")]
