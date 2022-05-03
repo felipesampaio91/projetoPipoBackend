@@ -10,7 +10,7 @@ using Projeto.Infra.Data.Contexts;
 namespace Projeto.Infra.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220415005034_Initial2")]
+    [Migration("20220503030449_Initial2")]
     partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CNPJ")
+                    b.Property<string>("Cnpj")
                         .IsRequired()
                         .HasColumnName("Cnpj")
                         .HasColumnType("nvarchar(25)")
@@ -81,9 +81,9 @@ namespace Projeto.Infra.Data.Migrations
 
             modelBuilder.Entity("Projeto.Domain.Entities.ClienteBeneficio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdClienteBeneficio")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("Id")
+                        .HasColumnName("IdClienteBeneficio")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -99,7 +99,7 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnName("IdCliente")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdClienteBeneficio");
 
                     b.HasIndex("IdBeneficio");
 
@@ -120,14 +120,14 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnName("Altura")
                         .HasColumnType("decimal(5,2)");
 
-                    b.Property<string>("CPF")
+                    b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnName("Cpf")
                         .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
                     b.Property<DateTime>("DataAdmissao")
-                        .HasColumnName("DataCadastro")
+                        .HasColumnName("DataAdmissao")
                         .HasColumnType("date");
 
                     b.Property<DateTimeOffset>("DataInclusao")
@@ -135,15 +135,17 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnName("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Endereco")
-                        .IsRequired()
                         .HasColumnName("Endereco")
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
+
+                    b.Property<decimal>("HorasMeditadas")
+                        .HasColumnName("HorasMeditadas")
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<int>("IdCliente")
                         .HasColumnName("IdCliente")
@@ -168,9 +170,9 @@ namespace Projeto.Infra.Data.Migrations
 
             modelBuilder.Entity("Projeto.Domain.Entities.FuncionarioBeneficio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdFuncionarioBeneficio")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("Id")
+                        .HasColumnName("IdFuncionarioBeneficio")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -186,7 +188,7 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnName("IdCliente")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdFuncionarioBeneficio");
 
                     b.HasIndex("IdBeneficio");
 
@@ -203,7 +205,7 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CNPJ")
+                    b.Property<string>("Cnpj")
                         .IsRequired()
                         .HasColumnName("Cnpj")
                         .HasColumnType("nvarchar(25)")

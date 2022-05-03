@@ -11,11 +11,11 @@ namespace Projeto.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FunionarioController : ControllerBase
+    public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioApplicationService funcionarioAppicationService;
 
-        public FunionarioController(IFuncionarioApplicationService funcionarioAppicationService)
+        public FuncionarioController(IFuncionarioApplicationService funcionarioAppicationService)
         {
             this.funcionarioAppicationService = funcionarioAppicationService;
         }
@@ -52,12 +52,12 @@ namespace Projeto.Presentation.Controllers
             }
         }
 
-        [HttpDelete("{idOperadora}")]
-        public IActionResult Delete(int iduncionario)
+        [HttpDelete("{idFuncionario}")]
+        public IActionResult Delete(int idFuncionario)
         {
             try
             {
-                funcionarioAppicationService.Delete(iduncionario);
+                funcionarioAppicationService.Delete(idFuncionario);
 
                 return Ok("Funcionário deletado com sucesso.");
             }
@@ -82,12 +82,12 @@ namespace Projeto.Presentation.Controllers
             }
         }
 
-        [HttpGet("{idOperadora}")]
-        public IActionResult GetById(int iduncionario)
+        [HttpGet("{idFuncionario}")]
+        public IActionResult GetById(int idFuncionario)
         {
             try
             {
-                return Ok(funcionarioAppicationService.GetById(iduncionario));
+                return Ok(funcionarioAppicationService.GetById(idFuncionario));
             }
             catch (Exception e)
             {

@@ -18,7 +18,7 @@ namespace Projeto.Infra.Data.Contexts
 
             var root = configurationBuilder.Build();
             var connectionString = root.GetSection("ConnectionStrings")
-                .GetSection("Pipo").Value;
+                .GetSection("PipoSaude").Value;
 
             var builder = new DbContextOptionsBuilder<DataContext>();
             builder.UseSqlServer(connectionString);

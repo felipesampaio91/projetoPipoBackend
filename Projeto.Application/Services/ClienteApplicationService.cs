@@ -21,7 +21,7 @@ namespace Projeto.Application.Services
         {
             var cliente = new Cliente();
             cliente.Nome = model.Nome;
-            cliente.Cnpj = model.Nome;
+            cliente.Cnpj = model.Cnpj;
             cliente.DataInclusao = DateTime.UtcNow;
 
             clienteDomainService.Insert(cliente);

@@ -125,7 +125,7 @@ namespace Projeto.Infra.Data.Migrations
                         .HasMaxLength(11);
 
                     b.Property<DateTime>("DataAdmissao")
-                        .HasColumnName("DataCadastro")
+                        .HasColumnName("DataAdmissao")
                         .HasColumnType("date");
 
                     b.Property<DateTimeOffset>("DataInclusao")
@@ -133,15 +133,17 @@ namespace Projeto.Infra.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnName("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Endereco")
-                        .IsRequired()
                         .HasColumnName("Endereco")
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
+
+                    b.Property<decimal>("HorasMeditadas")
+                        .HasColumnName("HorasMeditadas")
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<int>("IdCliente")
                         .HasColumnName("IdCliente")

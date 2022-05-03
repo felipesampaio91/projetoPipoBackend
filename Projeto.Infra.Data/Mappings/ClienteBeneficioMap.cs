@@ -16,13 +16,16 @@ namespace Projeto.Infra.Data.Mappings
             builder.HasKey(clienteBeneficio => clienteBeneficio.IdClienteBeneficio);
 
             builder.Property(clienteBeneficio => clienteBeneficio.IdClienteBeneficio)
-            .HasColumnName("IdClienteBeneficio");
+            .HasColumnName("IdClienteBeneficio")
+           .IsRequired();
 
             builder.Property(clienteBeneficio => clienteBeneficio.IdCliente)
-            .HasColumnName("IdCliente");
+            .HasColumnName("IdCliente")
+           .IsRequired();
 
             builder.Property(clienteBeneficio => clienteBeneficio.IdBeneficio)
-            .HasColumnName("IdBeneficio");
+            .HasColumnName("IdBeneficio")
+           .IsRequired();
 
             builder.Property(clienteBeneficio => clienteBeneficio.DataInclusao)
            .HasColumnName("DataInclusao")

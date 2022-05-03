@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -27,7 +28,20 @@ namespace Projeto.Presentation.Controllers
             {
                 clienteAppicationService.Insert(model);
 
-                return Ok("Cliente cadastrado com sucesso.");
+                var cliente = new Cliente();
+
+                cliente.Nome = model.Nome;
+                cliente.Cnpj = model.Cnpj;
+                cliente.DataInclusao = model.DataInclusao;
+
+
+                var result = new
+                {
+                    mensagem = "Cliente cadastrado com sucesso.",
+                    cliente
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -52,7 +66,7 @@ namespace Projeto.Presentation.Controllers
             }
         }
 
-        [HttpDelete("{idOperadora}")]
+        [HttpDelete("{idCliente}")]
         public IActionResult Delete(int idCliente)
         {
             try

@@ -27,7 +27,7 @@ namespace Projeto.Presentation.Controllers
             {
                 beneficioAppicationService.Insert(model);
 
-                return Ok("Cliente cadastrado com sucesso.");
+                return Ok("Benefício cadastrado com sucesso.");
             }
             catch (Exception e)
             {
@@ -43,7 +43,7 @@ namespace Projeto.Presentation.Controllers
             {
                 beneficioAppicationService.Update(model);
 
-                return Ok("Cliente atualizado com sucesso.");
+                return Ok("Benefício atualizado com sucesso.");
             }
             catch (Exception e)
             {
@@ -52,14 +52,14 @@ namespace Projeto.Presentation.Controllers
             }
         }
 
-        [HttpDelete("{idOperadora}")]
-        public IActionResult Delete(int idCliente)
+        [HttpDelete("{idBeneficio}")]
+        public IActionResult Delete(int idBeneficio)
         {
             try
             {
-                beneficioAppicationService.Delete(idCliente);
+                beneficioAppicationService.Delete(idBeneficio);
 
-                return Ok("Cliente deletado com sucesso.");
+                return Ok("Benefício deletado com sucesso.");
             }
             catch (Exception e)
             {
@@ -82,12 +82,12 @@ namespace Projeto.Presentation.Controllers
             }
         }
 
-        [HttpGet("{idCliente}")]
-        public IActionResult GetById(int idCliente)
+        [HttpGet("{idBeneficio}")]
+        public IActionResult GetById(int idBeneficio)
         {
             try
             {
-                return Ok(beneficioAppicationService.GetById(idCliente));
+                return Ok(beneficioAppicationService.GetById(idBeneficio));
             }
             catch (Exception e)
             {

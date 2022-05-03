@@ -16,7 +16,8 @@ namespace Projeto.Infra.Data.Mappings
             builder.HasKey(funcionario => funcionario.IdFuncionario);
 
             builder.Property(funcionario => funcionario.IdFuncionario)
-            .HasColumnName("IdFuncionario");
+            .HasColumnName("IdFuncionario")
+            .IsRequired();
 
             builder.Property(funcionario => funcionario.Nome)
             .HasColumnName("Nome")
@@ -29,18 +30,15 @@ namespace Projeto.Infra.Data.Mappings
             .IsRequired();
 
             builder.Property(funcionario => funcionario.Email)
-            .HasColumnName("Email")
-            .IsRequired();
+            .HasColumnName("Email");
 
             builder.Property(funcionario => funcionario.DataAdmissao)
-            .HasColumnName("DataCadastro")
-            .HasColumnType("date")
-            .IsRequired();
+            .HasColumnName("DataAdmissao")
+            .HasColumnType("date");
 
             builder.Property(funcionario => funcionario.Endereco)
             .HasColumnName("Endereco")
-            .HasMaxLength(60)
-            .IsRequired();
+            .HasMaxLength(60);
 
             builder.Property(funcionario => funcionario.Peso)
             .HasColumnName("Peso")
@@ -49,6 +47,10 @@ namespace Projeto.Infra.Data.Mappings
 
             builder.Property(funcionario => funcionario.Altura)
             .HasColumnName("Altura")
+            .HasColumnType("decimal(5,2)");
+
+            builder.Property(funcionario => funcionario.HorasMeditadas)
+            .HasColumnName("HorasMeditadas")
             .HasColumnType("decimal(5,2)");
 
             builder.Property(funcionario => funcionario.DataInclusao)

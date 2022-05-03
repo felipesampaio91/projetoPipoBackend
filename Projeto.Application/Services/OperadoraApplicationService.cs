@@ -20,6 +20,7 @@ namespace Projeto.Application.Services
         public void Insert(OperadoraCadastroModel model)
         {
             var operadora = new Operadora();
+            operadora.IdOperadora = operadora.IdOperadora;
             operadora.Nome = model.Nome;
             operadora.Cnpj = model.Cnpj;
             operadora.DataInclusao = DateTime.UtcNow;

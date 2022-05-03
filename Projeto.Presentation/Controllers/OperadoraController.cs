@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -27,7 +28,19 @@ namespace Projeto.Presentation.Controllers
             {
                 operadoraAppicationService.Insert(model);
 
-                return Ok("Operadora cadastrada com sucesso.");
+                var operadora = new Operadora();
+                operadora.Nome = model.Nome;
+                operadora.Cnpj = model.Cnpj;
+                operadora.DataInclusao = model.DataInclusao;
+
+
+                var result = new
+                {
+                    mensagem = "Operadora cadastrada com sucesso.",
+                    operadora
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -37,13 +50,25 @@ namespace Projeto.Presentation.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(OperadoraEdicaoModel model )
+        public IActionResult Put(OperadoraEdicaoModel model)
         {
             try
             {
                 operadoraAppicationService.Update(model);
 
-                return Ok("Operadora atualizada com sucesso.");
+                var operadora = new Operadora();
+
+                operadora.IdOperadora = model.IdOperadora;
+                operadora.Nome = model.Nome;
+                operadora.Cnpj = model.Cnpj;
+
+                var result = new
+                {
+                    mensagem = "Operadora atualizada com sucesso.",
+                    operadora
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {

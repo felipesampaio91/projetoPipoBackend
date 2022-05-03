@@ -14,6 +14,7 @@ namespace Projeto.Domain.Entities
         public string Email { get; set; }
         public decimal Peso { get; set; }
         public decimal Altura { get; set; }
+        public decimal HorasMeditadas { get; set; }
         public DateTimeOffset DataInclusao { get; set; }
         public int IdCliente { get; set; }
 

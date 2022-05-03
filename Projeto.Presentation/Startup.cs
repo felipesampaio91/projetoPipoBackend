@@ -35,18 +35,6 @@ namespace Projeto.Presentation
         {
             services.AddControllers();
 
-            //Configuraão para inicializar as classes do repositório
-            //var connectionString = Configuration.GetConnectionString("Pipo");
-            //services.AddTransient(map => new FuncionarioRepository(connectionString));
-
-            //services.AddTransient(MapExtensions => new FuncionarioRepository(connectionString));
-            //services.AddTransient(MapExtensions => new BeneficioRepository(connectionString));
-            //services.AddTransient(MapExtensions => new ClienteRepository(connectionString));
-            //services.AddTransient(MapExtensions => new OperadoraRepository(connectionString));
-            //services.AddTransient(MapExtensions => new FuncionarioBeneficioRepository(connectionString));
-            //services.AddTransient(MapExtensions => new ClienteBeneficioRepository(connectionString));
-
-
             //configuração da documentação do Swagger
             services.AddSwaggerGen(s =>
             {
@@ -65,22 +53,28 @@ namespace Projeto.Presentation
                     });
             });
 
-            services.AddDbContext<DataContext>(d => d.UseSqlServer(Configuration.GetConnectionString("Pipo")));
+            services.AddDbContext<DataContext>(d => d.UseSqlServer(Configuration.GetConnectionString("PipoSaude")));
 
             services.AddTransient<IOperadoraApplicationService, OperadoraApplicationService>();
             services.AddTransient<IClienteApplicationService, ClienteApplicationService>();
+            services.AddTransient<IClienteBeneficioApplicationService, ClienteBeneficioApplicationService>();
             services.AddTransient<IBeneficioApplicationService, BeneficioApplicationService>();
             services.AddTransient<IFuncionarioApplicationService, FuncionarioApplicationService>();
+            services.AddTransient<IFuncionarioBeneficioApplicationService, FuncionarioBeneficioApplicationService>();
 
             services.AddTransient<IOperadoraDomainService, OperadoraDomainService>();
             services.AddTransient<IClienteDomainService, ClienteDomainService>();
+            services.AddTransient<IClienteBeneficioDomainService, ClienteBeneficioDomainService>();
             services.AddTransient<IBeneficioDomainService, BeneficioDomainService>();
             services.AddTransient<IFuncionarioDomainService, FuncionarioDomainService>();
+            services.AddTransient<IFuncionarioBeneficioDomainService, FuncionarioBeneficioDomainService>();
 
             services.AddTransient<IOperadoraRepository, OperadoraRepository>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IClienteBeneficioRepository, ClienteBeneficioRepository>();
             services.AddTransient<IBeneficioRepository, BeneficioRepository>();
             services.AddTransient<IFuncionarioRepository, FuncionarioRepository>();
+            services.AddTransient<IFuncionarioBeneficioRepository, FuncionarioBeneficioRepository>();
 
         }
 

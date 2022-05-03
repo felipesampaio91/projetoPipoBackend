@@ -16,7 +16,8 @@ namespace Projeto.Infra.Data.Mappings
             builder.HasKey(beneficio => beneficio.IdBeneficio);
 
             builder.Property(beneficio => beneficio.IdBeneficio)
-            .HasColumnName("IdBeneficio");
+            .HasColumnName("IdBeneficio")
+            .IsRequired();
 
             builder.Property(beneficio => beneficio.Nome)
             .HasColumnName("Nome")

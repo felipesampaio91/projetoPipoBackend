@@ -1,4 +1,5 @@
 ﻿using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

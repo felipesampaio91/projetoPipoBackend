@@ -22,9 +22,13 @@ namespace Projeto.Application.Services
             var funcionario = new Funcionario();
             funcionario.Nome = model.Nome;
             funcionario.Cpf = model.Cpf;
-            funcionario.DataAdmissao = model.DataAdmissao;
+            funcionario.DataAdmissao = DateTime.Parse(model.DataAdmissao);
             funcionario.Endereco = model.Endereco;
+            funcionario.Email = model.Email;
             funcionario.IdCliente = model.IdCliente;
+            funcionario.Peso = model.Peso;
+            funcionario.Altura = model.Altura;
+            funcionario.HorasMeditadas = model.HorasMeditadas;
             funcionario.DataInclusao = DateTime.UtcNow;
 
             funcionarioDomainService.Insert(funcionario);
@@ -36,9 +40,13 @@ namespace Projeto.Application.Services
             funcionario.IdFuncionario = model.IdFuncionario;
             funcionario.Nome = model.Nome;
             funcionario.Cpf = model.Cpf;
-            funcionario.DataAdmissao = model.DataAdmissao;
+            funcionario.DataAdmissao = DateTime.Parse(model.DataAdmissao);
             funcionario.Endereco = model.Endereco;
+            funcionario.Email = model.Email;
             funcionario.IdCliente = model.IdCliente;
+            funcionario.Peso = model.Peso;
+            funcionario.Altura = model.Altura;
+            funcionario.HorasMeditadas = model.HorasMeditadas;
 
             funcionarioDomainService.Update(funcionario);
         }
@@ -65,6 +73,7 @@ namespace Projeto.Application.Services
                 model.Email = item.Email;
                 model.Peso = item.Peso;
                 model.Altura = item.Altura;
+                model.HorasMeditadas = item.HorasMeditadas;
                 model.DataInclusao = item.DataInclusao;
 
                 model.Cliente = new ClienteConsultaModel();
@@ -94,6 +103,7 @@ namespace Projeto.Application.Services
             model.Email = funcionario.Email;
             model.Peso = funcionario.Peso;
             model.Altura = funcionario.Altura;
+            model.HorasMeditadas = funcionario.HorasMeditadas;
             model.DataInclusao = funcionario.DataInclusao;
 
             model.Cliente = new ClienteConsultaModel();

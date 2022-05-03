@@ -16,7 +16,8 @@ namespace Projeto.Infra.Data.Mappings
             builder.HasKey(cliente => cliente.IdCliente);
 
             builder.Property(cliente => cliente.IdCliente)
-            .HasColumnName("IdCliente");
+            .HasColumnName("IdCliente")
+            .IsRequired();
 
             builder.Property(cliente => cliente.Nome)
             .HasColumnName("Nome")

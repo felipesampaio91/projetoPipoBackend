@@ -22,23 +22,24 @@ namespace Projeto.Application.Models
 
         [MinLength(6, ErrorMessage = "Informe no mínimo {1} caracteres")]
         [MaxLength(8, ErrorMessage = "Informe no máximo {1} caracteres")]
-        [Required(ErrorMessage = "Informe a data de admissão do funcionário.")]
-        public DateTime DataAdmissao { get; set; }
+        //[Required(ErrorMessage = "Informe a data de admissão do funcionário.")]
+        public string DataAdmissao { get; set; }
 
         [MinLength(6, ErrorMessage = "Informe no mínimo {1} caracteres")]
         [MaxLength(60, ErrorMessage = "Informe no máximo {1} caracteres")]
-        [Required(ErrorMessage = "Informe o endereço do funcionário.")]
+        //[Required(ErrorMessage = "Informe o endereço do funcionário.")]
         public string Endereco { get; set; }
 
         [MinLength(3, ErrorMessage = "Informe no mínimo {1} caracteres")]
         [MaxLength(60, ErrorMessage = "Informe no máximo {1} caracteres")]
         public string Email { get; set; }
 
-        [RegularExpression("^[0-9.,]{3,5}$", ErrorMessage = "Por favor, informe um peso válido")]
+        //[RegularExpression("^[0-9.,]{3,5}$", ErrorMessage = "Por favor, informe um peso válido")]
         public decimal Peso { get; set; }
 
-        [RegularExpression("^[0-9.,]{3,4}$", ErrorMessage = "Por favor, informe uma altura válida")]
+        //[RegularExpression("^[0-9.,]{3,4}$", ErrorMessage = "Por favor, informe uma altura válida")]
         public decimal Altura { get; set; }
+        public decimal HorasMeditadas { get; set; }
 
         [RegularExpression("^[0-9]{1,9}$", ErrorMessage = "Por favor, informe um ID válido")]
         [Required(ErrorMessage = "Informe o ID do cliente.")]
