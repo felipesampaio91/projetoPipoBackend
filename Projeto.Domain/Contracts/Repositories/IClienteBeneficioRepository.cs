@@ -7,5 +7,6 @@ namespace Projeto.Domain.Contracts.Repositories
 {
     public interface IClienteBeneficioRepository : IBaseRepository<ClienteBeneficio>
     {
+        ClienteBeneficio VerificaClienteBeneficio(int idCliente, int idBeneficio);
     }
 }

@@ -17,7 +17,7 @@ namespace Projeto.Application.Services
             this.operadoraDomainService = operadoraDomainService;
         }
 
-        public void Insert(OperadoraCadastroModel model)
+        public Operadora Insert(OperadoraCadastroModel model)
         {
             var operadora = new Operadora();
             operadora.IdOperadora = operadora.IdOperadora;
@@ -26,9 +26,11 @@ namespace Projeto.Application.Services
             operadora.DataInclusao = DateTime.UtcNow;
 
             operadoraDomainService.Insert(operadora);
+
+            return operadora;
         }
 
-        public void Update(OperadoraEdicaoModel model)
+        public OperadoraEdicaoModel Update(OperadoraEdicaoModel model)
         {
             var operadora = new Operadora();
             operadora.IdOperadora = model.IdOperadora;
@@ -36,6 +38,8 @@ namespace Projeto.Application.Services
             operadora.Cnpj = model.Cnpj;
 
             operadoraDomainService.Update(operadora);
+
+            return model;
         }
 
         public void Delete(int idOperadora)

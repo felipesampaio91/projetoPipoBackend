@@ -26,13 +26,8 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                operadoraAppicationService.Insert(model);
-
                 var operadora = new Operadora();
-                operadora.Nome = model.Nome;
-                operadora.Cnpj = model.Cnpj;
-                operadora.DataInclusao = model.DataInclusao;
-
+                operadora = operadoraAppicationService.Insert(model);
 
                 var result = new
                 {
@@ -54,13 +49,8 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                operadoraAppicationService.Update(model);
-
-                var operadora = new Operadora();
-
-                operadora.IdOperadora = model.IdOperadora;
-                operadora.Nome = model.Nome;
-                operadora.Cnpj = model.Cnpj;
+                var operadora = new OperadoraEdicaoModel();
+                operadora = operadoraAppicationService.Update(model);
 
                 var result = new
                 {
@@ -82,9 +72,18 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
+                var operadora = new OperadoraConsultaModel();
+                operadora = operadoraAppicationService.GetById(idOperadora);
+
                 operadoraAppicationService.Delete(idOperadora);
 
-                return Ok("Operadora deletada com sucesso.");
+                var result = new
+                {
+                    mensagem = "Operadora excluída com sucesso.",
+                    operadora
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {

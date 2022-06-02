@@ -8,5 +8,6 @@ namespace Projeto.Domain.Contracts.Repositories
     public interface IFuncionarioRepository : IBaseRepository<Funcionario>
     {
         Funcionario GetByCpf(string cpf);
+        List<ClienteBeneficio> GetBeneficioByIdCliente(int idCliente);
     }
 }

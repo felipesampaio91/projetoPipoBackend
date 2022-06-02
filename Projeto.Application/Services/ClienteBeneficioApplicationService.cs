@@ -17,17 +17,27 @@ namespace Projeto.Application.Services
             this.clienteBeneficioDomainService = clienteBeneficioDomainService;
         }
 
-        public void Insert(ClienteBeneficioCadastroModel model)
+        public List<ClienteBeneficio> Insert(List<ClienteBeneficioCadastroModel> listaClienteBeneficio)
         {
-            var clienteBeneficio = new ClienteBeneficio();
-            clienteBeneficio.IdCliente = model.IdCliente;
-            clienteBeneficio.IdBeneficio = model.IdBeneficio;
-            clienteBeneficio.DataInclusao = DateTime.UtcNow;
 
-            clienteBeneficioDomainService.Insert(clienteBeneficio);
+            var listaClienteBeneficioResponse = new List<ClienteBeneficio>();
+
+            foreach (var item in listaClienteBeneficio)
+            {
+                var clienteBeneficio = new ClienteBeneficio();
+                clienteBeneficio.IdCliente = item.IdCliente;
+                clienteBeneficio.IdBeneficio = item.IdBeneficio;
+                clienteBeneficio.DataInclusao = DateTime.UtcNow;
+
+                clienteBeneficioDomainService.Insert(clienteBeneficio);
+
+                listaClienteBeneficioResponse.Add(clienteBeneficio);
+            }
+
+            return listaClienteBeneficioResponse;
         }
 
-        public void Update(ClienteBeneficioEdicaoModel model)
+        public ClienteBeneficioEdicaoModel Update(ClienteBeneficioEdicaoModel model)
         {
             var clienteBeneficio = new ClienteBeneficio();
             clienteBeneficio.IdClienteBeneficio = model.IdClienteBeneficio;
@@ -35,6 +45,8 @@ namespace Projeto.Application.Services
             clienteBeneficio.IdBeneficio = model.IdBeneficio;
 
             clienteBeneficioDomainService.Update(clienteBeneficio);
+
+            return model;
         }
 
         public void Delete(int idClienteBeneficio)
@@ -51,6 +63,7 @@ namespace Projeto.Application.Services
             foreach (var item in clienteBeneficioDomainService.GetAll())
             {
                 var model = new ClienteBeneficioConsultaModel();
+                model.IdClienteBeneficio = item.IdClienteBeneficio;
                 model.IdCliente = item.IdCliente;
                 model.IdBeneficio = item.IdBeneficio;
                 model.DataInclusao = item.DataInclusao;
@@ -67,6 +80,7 @@ namespace Projeto.Application.Services
             var clienteBeneficio = clienteBeneficioDomainService.GetById(idClienteBeneficio);
 
             var model = new ClienteBeneficioConsultaModel();
+            model.IdClienteBeneficio = clienteBeneficio.IdClienteBeneficio;
             model.IdCliente = clienteBeneficio.IdCliente;
             model.IdBeneficio = clienteBeneficio.IdBeneficio;
             model.DataInclusao = clienteBeneficio.DataInclusao;

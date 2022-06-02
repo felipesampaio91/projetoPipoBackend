@@ -8,8 +8,8 @@ namespace Projeto.Application.Contracts
 {
     public interface IOperadoraApplicationService
     {
-        void Insert(OperadoraCadastroModel model);
-        void Update(OperadoraEdicaoModel model);
+        Operadora Insert(OperadoraCadastroModel model);
+        OperadoraEdicaoModel Update(OperadoraEdicaoModel model);
         void Delete(int idOperadora);
 
         List<OperadoraConsultaModel> GetAll();

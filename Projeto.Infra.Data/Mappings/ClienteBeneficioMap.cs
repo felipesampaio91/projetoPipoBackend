@@ -33,7 +33,6 @@ namespace Projeto.Infra.Data.Mappings
            .IsRequired();
 
 
-
             builder.HasOne(clienteBeneficio => clienteBeneficio.Beneficio)
                 .WithMany(beneficio => beneficio.ClienteBeneficios)
                 .HasForeignKey(clienteBeneficio => clienteBeneficio.IdBeneficio);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -25,9 +26,16 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                funcionarioAppicationService.Insert(model);
+                var funcionario = new Funcionario();
+                funcionario = funcionarioAppicationService.Insert(model);
 
-                return Ok("Funcionário cadastrado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Funcionário cadastrado com sucesso.",
+                    funcionario
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -41,9 +49,15 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                funcionarioAppicationService.Update(model);
+                var funcionario = funcionarioAppicationService.Update(model);
 
-                return Ok("Funcionário atualizado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Funcionário atualizado com sucesso.",
+                    funcionario
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -57,9 +71,17 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
+                var funcionario = funcionarioAppicationService.GetById(idFuncionario);
+
                 funcionarioAppicationService.Delete(idFuncionario);
 
-                return Ok("Funcionário deletado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Funcionário excluído com sucesso.",
+                    funcionario
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {

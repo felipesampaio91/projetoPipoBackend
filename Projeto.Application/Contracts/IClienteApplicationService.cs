@@ -1,4 +1,5 @@
 ﻿using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,8 @@ namespace Projeto.Application.Contracts
 {
     public interface IClienteApplicationService
     {
-        void Insert(ClienteCadastroModel model);
-        void Update(ClienteEdicaoModel model);
+        Cliente Insert(ClienteCadastroModel model);
+        ClienteEdicaoModel Update(ClienteEdicaoModel model);
         void Delete(int idCliente);
 
         List<ClienteConsultaModel> GetAll();

@@ -69,25 +69,9 @@ namespace Projeto.Presentation.Controllers
                         break;
                 }
 
-
-
-                //if(benefico.Nome == "Plano de Saúde NorteEuropa")
-                //{
-                //    var funcionario = funcionarioAppicationService.GetById(model.IdFuncionario);
-
-
-                //}
-
-
-
-
-
                 funcionarioBeneficioAppicationService.Insert(model);
 
-                var funcionarioBeneficio = new FuncionarioBeneficio();
-
-                funcionarioBeneficio.IdFuncionario = model.IdFuncionario;
-                funcionarioBeneficio.IdBeneficio = model.IdBeneficio;
+                var funcionarioBeneficio = funcionarioBeneficioAppicationService.Insert(model);
 
                 var result = new
                 {

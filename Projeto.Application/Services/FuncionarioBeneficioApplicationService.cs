@@ -17,7 +17,7 @@ namespace Projeto.Application.Services
             this.funcionarioBeneficioDomainService = funcionarioBeneficioDomainService;
         }
 
-        public void Insert(FuncionarioBeneficioCadastroModel model)
+        public FuncionarioBeneficio Insert(FuncionarioBeneficioCadastroModel model)
         {
             var funcionarioBeneficio = new FuncionarioBeneficio();
             funcionarioBeneficio.IdFuncionario = model.IdFuncionario;
@@ -25,9 +25,11 @@ namespace Projeto.Application.Services
             funcionarioBeneficio.DataInclusao = DateTime.UtcNow;
 
             funcionarioBeneficioDomainService.Insert(funcionarioBeneficio);
+
+            return funcionarioBeneficio;
         }
 
-        public void Update(FuncionarioBeneficioEdicaoModel model)
+        public FuncionarioBeneficioEdicaoModel Update(FuncionarioBeneficioEdicaoModel model)
         {
             var funcionarioBeneficio = new FuncionarioBeneficio();
             funcionarioBeneficio.IdFuncionarioBeneficio = model.IdFuncionarioBeneficio;
@@ -35,6 +37,8 @@ namespace Projeto.Application.Services
             funcionarioBeneficio.IdBeneficio = model.IdBeneficio;
 
             funcionarioBeneficioDomainService.Update(funcionarioBeneficio);
+
+            return model;
         }
 
         public void Delete(int idFuncionarioBeneficio)

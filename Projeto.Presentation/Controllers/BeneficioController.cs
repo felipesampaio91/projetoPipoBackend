@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -25,9 +26,16 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                beneficioAppicationService.Insert(model);
+                var beneficio = new Beneficio();
+                beneficio = beneficioAppicationService.Insert(model);
 
-                return Ok("Benefício cadastrado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Benefício cadastrado com sucesso.",
+                    beneficio
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -41,9 +49,16 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                beneficioAppicationService.Update(model);
+                var beneficio = new BeneficioEdicaoModel();
+                beneficio = beneficioAppicationService.Update(model);
 
-                return Ok("Benefício atualizado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Benefício atualizado com sucesso.",
+                    beneficio
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -57,9 +72,18 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
+                var beneficio = new BeneficioConsultaModel();
+                beneficio = beneficioAppicationService.GetById(idBeneficio);
+
                 beneficioAppicationService.Delete(idBeneficio);
 
-                return Ok("Benefício deletado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Benefício excluído com sucesso.",
+                    beneficio
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {

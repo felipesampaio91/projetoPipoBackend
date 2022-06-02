@@ -12,7 +12,7 @@ namespace Projeto.Domain.Entities
         public DateTime? DataAdmissao { get; set; }
         public string? Endereco { get; set; }
         public string? Email { get; set; }
-        public decimal Peso { get; set; }
+        public decimal? Peso { get; set; }
         public decimal? Altura { get; set; }
         public decimal? HorasMeditadas { get; set; }
         public DateTimeOffset DataInclusao { get; set; }

@@ -17,7 +17,7 @@ namespace Projeto.Application.Services
             this.beneficioDomainService = beneficioDomainService;
         }
 
-        public void Insert(BeneficioCadastroModel model)
+        public Beneficio Insert(BeneficioCadastroModel model)
         {
             var beneficio = new Beneficio();
             beneficio.Nome = model.Nome;
@@ -25,15 +25,19 @@ namespace Projeto.Application.Services
             beneficio.DataInclusao = DateTime.UtcNow;
 
             beneficioDomainService.Insert(beneficio);
+
+            return beneficio;
         }
 
-        public void Update(BeneficioEdicaoModel model)
+        public BeneficioEdicaoModel Update(BeneficioEdicaoModel model)
         {
-            var beneficio = new Beneficio();
-            beneficio.Nome = model.Nome;
+            var beneficio = beneficioDomainService.GetById(model.IdBeneficio);
             beneficio.IdBeneficio = model.IdBeneficio;
+            beneficio.Nome = model.Nome;
 
             beneficioDomainService.Update(beneficio);
+
+            return model;
         }
 
         public void Delete(int idBeneficio)

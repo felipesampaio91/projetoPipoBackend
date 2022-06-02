@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Application.Contracts
 {
     public interface IClienteBeneficioApplicationService
     {
-        void Insert(ClienteBeneficioCadastroModel model);
-        void Update(ClienteBeneficioEdicaoModel model);
+        List<ClienteBeneficio> Insert(List<ClienteBeneficioCadastroModel> listaClienteBeneficio);
+        ClienteBeneficioEdicaoModel Update(ClienteBeneficioEdicaoModel model);
         void Delete(int idClienteBeneficio);
 
         List<ClienteBeneficioConsultaModel> GetAll();

@@ -17,7 +17,7 @@ namespace Projeto.Application.Services
             this.funcionarioDomainService = funcionarioDomainService;
         }
 
-        public void Insert(FuncionarioCadastroModel model)
+        public Funcionario Insert(FuncionarioCadastroModel model)
         {
             var funcionario = new Funcionario();
             funcionario.Nome = model.Nome;
@@ -32,9 +32,11 @@ namespace Projeto.Application.Services
             funcionario.DataInclusao = DateTime.UtcNow;
 
             funcionarioDomainService.Insert(funcionario);
+
+            return funcionario;
         }
 
-        public void Update(FuncionarioEdicaoModel model)
+        public Funcionario Update(FuncionarioEdicaoModel model)
         {
             var funcionario = new Funcionario();
             funcionario.IdFuncionario = model.IdFuncionario;
@@ -49,6 +51,8 @@ namespace Projeto.Application.Services
             funcionario.HorasMeditadas = model.HorasMeditadas;
 
             funcionarioDomainService.Update(funcionario);
+
+            return funcionario;
         }
 
         public void Delete(int idFuncionario)

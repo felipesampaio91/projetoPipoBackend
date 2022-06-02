@@ -26,14 +26,8 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                clienteAppicationService.Insert(model);
-
                 var cliente = new Cliente();
-
-                cliente.Nome = model.Nome;
-                cliente.Cnpj = model.Cnpj;
-                cliente.DataInclusao = model.DataInclusao;
-
+                cliente = clienteAppicationService.Insert(model);
 
                 var result = new
                 {
@@ -55,9 +49,16 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                clienteAppicationService.Update(model);
+                var cliente = new ClienteEdicaoModel();
+                cliente = clienteAppicationService.Update(model);
 
-                return Ok("Cliente atualizado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Cliente atualizado com sucesso.",
+                    cliente
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -71,9 +72,18 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
+                var cliente = new ClienteConsultaModel();
+                cliente = clienteAppicationService.GetById(idCliente);
+
                 clienteAppicationService.Delete(idCliente);
 
-                return Ok("Cliente deletado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Cliente excluído com sucesso.",
+                    cliente
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {

@@ -1,27 +1,27 @@
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Net.Http;
-using Xunit;
-using Microsoft.AspNetCore.TestHost;
+Ôªøusing FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
-using Projeto.Presentation;
-using Projeto.Application.Models;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
-using System.Net;
+using Projeto.Application.Models;
 using Projeto.Domain.Entities;
+using Projeto.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Projeto.Testes
 {
-    public class OperadoraTest
+    public class ClienteTest
     {
         private readonly HttpClient httpClient;
 
-        public OperadoraTest()
+        public ClienteTest()
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -35,17 +35,17 @@ namespace Projeto.Testes
         }
 
         [Fact]
-        public async Task CadastrarOperadora()
+        public async Task CadastrarCliente()
         {
-            var model = new OperadoraCadastroModel();
-            model.Nome = "Operadora Teste12";
-            model.Cnpj = "94631763000184";
+            var model = new ClienteCadastroModel();
+            model.Nome = "Cliente Teste2";
+            model.Cnpj = "55197450000108";
             model.DataInclusao = DateTime.UtcNow;
 
-            var request = new StringContent(JsonConvert.SerializeObject(model), 
+            var request = new StringContent(JsonConvert.SerializeObject(model),
                 Encoding.UTF8, "application/json");
 
-            var result = await httpClient.PostAsync("api/Operadora", request);
+            var result = await httpClient.PostAsync("api/Cliente", request);
 
             var content = string.Empty;
             using (var httpContent = result.Content)
@@ -54,25 +54,25 @@ namespace Projeto.Testes
                 content += r.Result;
             }
 
-            var response = JsonConvert.DeserializeObject<ResponseOperadora>(content);
+            var response = JsonConvert.DeserializeObject<ResponseCliente>(content);
 
             result.StatusCode.Should().Be(HttpStatusCode.OK);
-            response.mensagem.Should().Contain("Operadora cadastrada com sucesso.");
+            response.mensagem.Should().Contain("Cliente cadastrado com sucesso.");
         }
 
         [Fact]
-        public async Task AtualizarOperadora()
+        public async Task AtualizarCliente()
         {
-            //Criando objeto que ser· atualizado
-            var modelCadastro = new OperadoraCadastroModel();
-            modelCadastro.Nome = "Operadora EdiÁ„o";
-            modelCadastro.Cnpj = "50891368000165";
+            //Criando objeto que ser√° atualizado
+            var modelCadastro = new ClienteCadastroModel();
+            modelCadastro.Nome = "Cliente Edi√ß√£o2";
+            modelCadastro.Cnpj = "18067149000153";
             modelCadastro.DataInclusao = DateTime.UtcNow;
 
             var requestCadastro = new StringContent(JsonConvert.SerializeObject(modelCadastro),
                 Encoding.UTF8, "application/json");
 
-            var resultCadastro = await httpClient.PostAsync("api/Operadora", requestCadastro);
+            var resultCadastro = await httpClient.PostAsync("api/Cliente", requestCadastro);
 
             var contentCadastro = string.Empty;
             using (var httpContent = resultCadastro.Content)
@@ -81,18 +81,18 @@ namespace Projeto.Testes
                 contentCadastro += r.Result;
             }
 
-            var responseCadastro = JsonConvert.DeserializeObject<ResponseOperadora>(contentCadastro);
+            var responseCadastro = JsonConvert.DeserializeObject<ResponseCliente>(contentCadastro);
 
             //Atualizando o objeto cadastrado
-            var modelEdicao = new OperadoraEdicaoModel();
-            modelEdicao.IdOperadora = responseCadastro.operadora.IdOperadora;
-            modelEdicao.Nome = "Operadora EdiÁ„o Atualizada";
-            modelEdicao.Cnpj = "04599113000106";
+            var modelEdicao = new ClienteEdicaoModel();
+            modelEdicao.IdCliente = responseCadastro.cliente.IdCliente;
+            modelEdicao.Nome = "Cliente Edi√ß√£o Atualizada";
+            modelEdicao.Cnpj = "18067149000153";
 
             var requestEdicao = new StringContent(JsonConvert.SerializeObject(modelEdicao),
                 Encoding.UTF8, "application/json");
 
-            var resultEdicao = await httpClient.PutAsync("api/Operadora", requestEdicao);
+            var resultEdicao = await httpClient.PutAsync("api/Cliente", requestEdicao);
 
             var contentEdicao = string.Empty;
             using (var httpContent = resultEdicao.Content)
@@ -101,25 +101,25 @@ namespace Projeto.Testes
                 contentEdicao += r.Result;
             }
 
-            var responseEdicao = JsonConvert.DeserializeObject<ResponseOperadora>(contentEdicao);
-            
+            var responseEdicao = JsonConvert.DeserializeObject<ResponseCliente>(contentEdicao);
+
             resultEdicao.StatusCode.Should().Be(HttpStatusCode.OK);
-            responseEdicao.mensagem.Should().Contain("Operadora atualizada com sucesso.");
+            responseEdicao.mensagem.Should().Contain("Cliente atualizado com sucesso.");
         }
 
         [Fact]
-        public async Task ExcluirOperadora()
+        public async Task ExcluirCliente()
         {
-            //Criando objeto que ser· excluÌdo
-            var modelCadastro = new OperadoraCadastroModel();
-            modelCadastro.Nome = "Operadora Teste12";
+            //Criando objeto que ser√° exclu√≠do
+            var modelCadastro = new ClienteCadastroModel();
+            modelCadastro.Nome = "Cliente Teste3";
             modelCadastro.Cnpj = "10633982000102";
             modelCadastro.DataInclusao = DateTime.UtcNow;
 
             var requestCadastro = new StringContent(JsonConvert.SerializeObject(modelCadastro),
                 Encoding.UTF8, "application/json");
 
-            var resultCadastro = await httpClient.PostAsync("api/Operadora", requestCadastro);
+            var resultCadastro = await httpClient.PostAsync("api/Cliente", requestCadastro);
 
             var contentCadastro = string.Empty;
             using (var httpContent = resultCadastro.Content)
@@ -128,10 +128,10 @@ namespace Projeto.Testes
                 contentCadastro += r.Result;
             }
 
-            var responseCadastro = JsonConvert.DeserializeObject<ResponseOperadora>(contentCadastro);
+            var responseCadastro = JsonConvert.DeserializeObject<ResponseCliente>(contentCadastro);
 
             //Excluindo o objeto cadastrado
-            var resultExclusao = await httpClient.DeleteAsync("api/Operadora/" + responseCadastro.operadora.IdOperadora);
+            var resultExclusao = await httpClient.DeleteAsync("api/Cliente/" + responseCadastro.cliente.IdCliente);
 
             var contentExclusao = string.Empty;
             using (var httpContent = resultExclusao.Content)
@@ -140,25 +140,25 @@ namespace Projeto.Testes
                 contentExclusao += r.Result;
             }
 
-            var responseExclusao = JsonConvert.DeserializeObject<ResponseOperadora>(contentExclusao);
+            var responseExclusao = JsonConvert.DeserializeObject<ResponseCliente>(contentExclusao);
 
             resultExclusao.StatusCode.Should().Be(HttpStatusCode.OK);
-            responseExclusao.mensagem.Should().Contain("Operadora excluÌda com sucesso.");
+            responseExclusao.mensagem.Should().Contain("Cliente exclu√≠do com sucesso.");
         }
 
         [Fact]
-        public async Task ConsultarOperadora()
+        public async Task ConsultarCliente()
         {
-            //Criando objeto que ser· consultado
-            var modelCadastro = new OperadoraCadastroModel();
-            modelCadastro.Nome = "Operadora Teste12";
-            modelCadastro.Cnpj = "09274753000160";
+            //Criando objeto que ser√° consultado
+            var modelCadastro = new ClienteCadastroModel();
+            modelCadastro.Nome = "Cliente Teste4";
+            modelCadastro.Cnpj = "48059039000100";
             modelCadastro.DataInclusao = DateTime.UtcNow;
 
             var requestCadastro = new StringContent(JsonConvert.SerializeObject(modelCadastro),
                 Encoding.UTF8, "application/json");
 
-            var resultCadastro = await httpClient.PostAsync("api/Operadora", requestCadastro);
+            var resultCadastro = await httpClient.PostAsync("api/Cliente", requestCadastro);
 
             var contentCadastro = string.Empty;
             using (var httpContent = resultCadastro.Content)
@@ -167,10 +167,10 @@ namespace Projeto.Testes
                 contentCadastro += r.Result;
             }
 
-            var responseCadastro = JsonConvert.DeserializeObject<ResponseOperadora>(contentCadastro);
+            var responseCadastro = JsonConvert.DeserializeObject<ResponseCliente>(contentCadastro);
 
             //Consultando o objeto cadastrado
-            var resultConsulta = await httpClient.GetAsync("api/Operadora");
+            var resultConsulta = await httpClient.GetAsync("api/Cliente");
 
             var contentConsulta = string.Empty;
             using (var httpContent = resultConsulta.Content)
@@ -179,28 +179,28 @@ namespace Projeto.Testes
                 contentConsulta += r.Result;
             }
 
-            var responseConsulta = JsonConvert.DeserializeObject<List<OperadoraConsultaModel>>(contentConsulta);
+            var responseConsulta = JsonConvert.DeserializeObject<List<ClienteConsultaModel>>(contentConsulta);
 
             resultConsulta.StatusCode.Should().Be(HttpStatusCode.OK);
             responseConsulta.Count().Should().BeGreaterThan(0);
-            responseConsulta.FirstOrDefault(p => p.IdOperadora == responseCadastro.operadora.IdOperadora)
+            responseConsulta.FirstOrDefault(p => p.IdCliente == responseCadastro.cliente.IdCliente)
                 .Should()
                 .NotBeNull();
         }
 
         [Fact]
-        public async Task ConsultarOperadoraPorId()
+        public async Task ConsultarClientePorId()
         {
-            //Criando objeto que ser· consultado
-            var modelCadastro = new OperadoraCadastroModel();
-            modelCadastro.Nome = "Operadora Teste12";
-            modelCadastro.Cnpj = "31782231000128";
+            //Criando objeto que ser√° consultado
+            var modelCadastro = new ClienteCadastroModel();
+            modelCadastro.Nome = "Operadora Teste5";
+            modelCadastro.Cnpj = "27529697000149";
             modelCadastro.DataInclusao = DateTime.UtcNow;
 
             var requestCadastro = new StringContent(JsonConvert.SerializeObject(modelCadastro),
                 Encoding.UTF8, "application/json");
 
-            var resultCadastro = await httpClient.PostAsync("api/Operadora", requestCadastro);
+            var resultCadastro = await httpClient.PostAsync("api/Cliente", requestCadastro);
 
             var contentCadastro = string.Empty;
             using (var httpContent = resultCadastro.Content)
@@ -209,10 +209,10 @@ namespace Projeto.Testes
                 contentCadastro += r.Result;
             }
 
-            var responseCadastro = JsonConvert.DeserializeObject<ResponseOperadora>(contentCadastro);
+            var responseCadastro = JsonConvert.DeserializeObject<ResponseCliente>(contentCadastro);
 
             //Consultando o objeto cadastrado
-            var resultConsulta = await httpClient.GetAsync("api/Operadora/" + responseCadastro.operadora.IdOperadora);
+            var resultConsulta = await httpClient.GetAsync("api/Cliente/" + responseCadastro.cliente.IdCliente);
 
             var contentConsulta = string.Empty;
             using (var httpContent = resultConsulta.Content)
@@ -221,20 +221,21 @@ namespace Projeto.Testes
                 contentConsulta += r.Result;
             }
 
-            var responseConsulta = JsonConvert.DeserializeObject<OperadoraConsultaModel>(contentConsulta);
+            var responseConsulta = JsonConvert.DeserializeObject<ClienteConsultaModel>(contentConsulta);
 
             resultConsulta.StatusCode.Should().Be(HttpStatusCode.OK);
             responseConsulta.Should().NotBeNull();
-            responseConsulta.IdOperadora.Should().Be(responseCadastro.operadora.IdOperadora);
-            responseConsulta.Nome.Should().Be(responseCadastro.operadora.Nome);
-            responseConsulta.Cnpj.Should().Be(responseCadastro.operadora.Cnpj);
-            responseConsulta.DataInclusao.Should().Be(responseCadastro.operadora.DataInclusao);
+            responseConsulta.IdCliente.Should().Be(responseCadastro.cliente.IdCliente);
+            responseConsulta.Nome.Should().Be(responseCadastro.cliente.Nome);
+            responseConsulta.Cnpj.Should().Be(responseCadastro.cliente.Cnpj);
+            responseConsulta.DataInclusao.Should().Be(responseCadastro.cliente.DataInclusao);
         }
     }
 
-    public class ResponseOperadora
+    public class ResponseCliente
     {
         public string mensagem { get; set; }
-        public Operadora operadora { get; set; }
+        public Cliente cliente { get; set; }
     }
+
 }

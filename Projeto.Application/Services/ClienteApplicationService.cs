@@ -17,7 +17,7 @@ namespace Projeto.Application.Services
             this.clienteDomainService = clienteDomainService;
         }
 
-        public void Insert(ClienteCadastroModel model)
+        public Cliente Insert(ClienteCadastroModel model)
         {
             var cliente = new Cliente();
             cliente.Nome = model.Nome;
@@ -25,9 +25,11 @@ namespace Projeto.Application.Services
             cliente.DataInclusao = DateTime.UtcNow;
 
             clienteDomainService.Insert(cliente);
+
+            return cliente;
         }
 
-        public void Update(ClienteEdicaoModel model)
+        public ClienteEdicaoModel Update(ClienteEdicaoModel model)
         {
             var cliente = new Cliente();
             cliente.IdCliente = model.IdCliente;
@@ -35,6 +37,8 @@ namespace Projeto.Application.Services
             cliente.Cnpj = model.Cnpj;
 
             clienteDomainService.Update(cliente);
+
+            return model;
         }
 
         public void Delete(int idCliente)

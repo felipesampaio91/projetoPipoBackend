@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Projeto.Application.Models;
+using Projeto.Domain.Entities;
 
 namespace Projeto.Application.Contracts
 {
     public interface IFuncionarioBeneficioApplicationService
     {
-        void Insert(FuncionarioBeneficioCadastroModel model);
-        void Update(FuncionarioBeneficioEdicaoModel model);
+        FuncionarioBeneficio Insert(FuncionarioBeneficioCadastroModel model);
+        FuncionarioBeneficioEdicaoModel Update(FuncionarioBeneficioEdicaoModel model);
         void Delete(int idFuncionarioBeneficio);
 
         List<FuncionarioBeneficioConsultaModel> GetAll();

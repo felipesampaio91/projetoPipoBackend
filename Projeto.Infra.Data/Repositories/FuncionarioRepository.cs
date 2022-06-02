@@ -25,6 +25,13 @@ namespace Projeto.Infra.Data.Repositories
             return dataContext.Funcionario.FirstOrDefault(f => f.Cpf.Equals(cpf));
         }
 
+        public List<ClienteBeneficio> GetBeneficioByIdCliente(int idCliente)
+        {
+            return dataContext.ClienteBeneficio
+                .Where(cliente => cliente.IdCliente == idCliente)
+                .ToList();
+        }
+
         public override List<Funcionario> GetAll()
         {
             return dataContext.Funcionario

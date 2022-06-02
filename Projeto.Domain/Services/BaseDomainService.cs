@@ -16,14 +16,16 @@ namespace Projeto.Domain.Services
             this.baseRepository = baseRepository;
         }
 
-        public virtual void Insert(T obj)
+        public virtual T Insert(T obj)
         {
             baseRepository.Insert(obj);
+            return obj;
         }
 
-        public virtual void Update(T obj)
+        public virtual T Update(T obj)
         {
             baseRepository.Update(obj);
+            return obj;
 
         }
 

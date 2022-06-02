@@ -22,24 +22,26 @@ namespace Projeto.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(ClienteBeneficioCadastroModel model)
+        public IActionResult Post(List<ClienteBeneficioCadastroModel> listaClienteBeneficio)
         {
             try
             {
-                clienteBeneficioAppicationService.Insert(model);
+                var listaClienteBeneficioResponse = new List<ClienteBeneficio>();
+                listaClienteBeneficioResponse = clienteBeneficioAppicationService.Insert(listaClienteBeneficio);
 
-                var clienteBebeficio = new ClienteBeneficio();
-
-                clienteBebeficio.IdCliente = model.IdCliente;
-                clienteBebeficio.IdBeneficio = model.IdBeneficio;
-
-                var result = new
+                foreach (var clienteBeneficio in listaClienteBeneficioResponse)
                 {
-                    mensagem = "Cliente-Bebefício cadastrado com sucesso.",
-                    clienteBebeficio
-                };
+                    var result = new
+                    {
+                        mensagem = "Cliente-Beneficio cadastrado com sucesso.",
+                        clienteBeneficio
+                    };
 
-                return Ok(result);
+                    return Ok(result);
+                }
+
+                return Ok();
+                
             }
             catch (Exception e)
             {
@@ -53,9 +55,16 @@ namespace Projeto.Presentation.Controllers
         {
             try
             {
-                clienteBeneficioAppicationService.Update(model);
+                var clienteBeneficio = new ClienteBeneficioEdicaoModel();
+                clienteBeneficio = clienteBeneficioAppicationService.Update(model);
 
-                return Ok("Cliente-Bebefício atualizado com sucesso.");
+                var result = new
+                {
+                    mensagem = "Cliente-Beneficio atualizado com sucesso.",
+                    clienteBeneficio
+                };
+
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -67,12 +76,21 @@ namespace Projeto.Presentation.Controllers
         [HttpDelete("{idClienteBeneficio}")]
         public IActionResult Delete(int idClienteBeneficio)
         {
-            try
-            {
-                clienteBeneficioAppicationService.Delete(idClienteBeneficio);
+              try
+                {
+                    var clienteBeneficio = new ClienteBeneficioConsultaModel();
+                    clienteBeneficio = clienteBeneficioAppicationService.GetById(idClienteBeneficio);
 
-                return Ok("Cliente-Bebefício deletado com sucesso.");
-            }
+                    clienteBeneficioAppicationService.Delete(idClienteBeneficio);
+
+                    var result = new
+                    {
+                        mensagem = "Cliente-Beneficio excluído com sucesso.",
+                        clienteBeneficio
+                    };
+
+                    return Ok(result);
+                }
             catch (Exception e)
             {
 

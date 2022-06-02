@@ -17,5 +17,19 @@ namespace Projeto.Domain.Services
             this.clienteBeneficioRepository = clienteBeneficioRepository;
         }
 
+        public override ClienteBeneficio Insert(ClienteBeneficio obj)
+        {
+            if (clienteBeneficioRepository.VerificaClienteBeneficio(obj.IdCliente, obj.IdBeneficio) == null)
+            {
+                clienteBeneficioRepository.Insert(obj);
+                return obj;
+            }
+            else
+            {
+                return obj;
+            }
+
+        }
+
     }
 }
