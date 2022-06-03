@@ -60,21 +60,18 @@ namespace Projeto.Presentation
             services.AddTransient<IClienteBeneficioApplicationService, ClienteBeneficioApplicationService>();
             services.AddTransient<IBeneficioApplicationService, BeneficioApplicationService>();
             services.AddTransient<IFuncionarioApplicationService, FuncionarioApplicationService>();
-            services.AddTransient<IFuncionarioBeneficioApplicationService, FuncionarioBeneficioApplicationService>();
 
             services.AddTransient<IOperadoraDomainService, OperadoraDomainService>();
             services.AddTransient<IClienteDomainService, ClienteDomainService>();
             services.AddTransient<IClienteBeneficioDomainService, ClienteBeneficioDomainService>();
             services.AddTransient<IBeneficioDomainService, BeneficioDomainService>();
             services.AddTransient<IFuncionarioDomainService, FuncionarioDomainService>();
-            services.AddTransient<IFuncionarioBeneficioDomainService, FuncionarioBeneficioDomainService>();
 
             services.AddTransient<IOperadoraRepository, OperadoraRepository>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IClienteBeneficioRepository, ClienteBeneficioRepository>();
             services.AddTransient<IBeneficioRepository, BeneficioRepository>();
             services.AddTransient<IFuncionarioRepository, FuncionarioRepository>();
-            services.AddTransient<IFuncionarioBeneficioRepository, FuncionarioBeneficioRepository>();
 
         }
 

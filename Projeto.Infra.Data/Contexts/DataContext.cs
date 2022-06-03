@@ -17,7 +17,6 @@ namespace Projeto.Infra.Data.Contexts
         public DbSet<Operadora> Operadora { get; set; }
         public DbSet<Beneficio> Beneficio { get; set; }
         public DbSet<ClienteBeneficio> ClienteBeneficio{ get; set; }
-        public DbSet<FuncionarioBeneficio> FuncionarioBeneficio { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,7 +24,6 @@ namespace Projeto.Infra.Data.Contexts
             modelBuilder.ApplyConfiguration(new ClienteMap());
             modelBuilder.ApplyConfiguration(new OperadoraMap());
             modelBuilder.ApplyConfiguration(new BeneficioMap());
-            modelBuilder.ApplyConfiguration(new FuncionarioBeneficioMap());
             modelBuilder.ApplyConfiguration(new ClienteBeneficioMap());
         }
     }
