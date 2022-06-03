@@ -31,7 +31,7 @@ namespace Projeto.Application.Services
 
         public ClienteEdicaoModel Update(ClienteEdicaoModel model)
         {
-            var cliente = new Cliente();
+            var cliente = clienteDomainService.GetById(model.IdCliente);
             cliente.IdCliente = model.IdCliente;
             cliente.Nome = model.Nome;
             cliente.Cnpj = model.Cnpj;

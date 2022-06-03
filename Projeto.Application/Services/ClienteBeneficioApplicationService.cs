@@ -39,7 +39,7 @@ namespace Projeto.Application.Services
 
         public ClienteBeneficioEdicaoModel Update(ClienteBeneficioEdicaoModel model)
         {
-            var clienteBeneficio = new ClienteBeneficio();
+            var clienteBeneficio = clienteBeneficioDomainService.GetById(model.IdClienteBeneficio);
             clienteBeneficio.IdClienteBeneficio = model.IdClienteBeneficio;
             clienteBeneficio.IdCliente = model.IdCliente;
             clienteBeneficio.IdBeneficio = model.IdBeneficio;

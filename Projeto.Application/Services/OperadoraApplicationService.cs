@@ -32,7 +32,7 @@ namespace Projeto.Application.Services
 
         public OperadoraEdicaoModel Update(OperadoraEdicaoModel model)
         {
-            var operadora = new Operadora();
+            var operadora = operadoraDomainService.GetById(model.IdOperadora);
             operadora.IdOperadora = model.IdOperadora;
             operadora.Nome = model.Nome;
             operadora.Cnpj = model.Cnpj;

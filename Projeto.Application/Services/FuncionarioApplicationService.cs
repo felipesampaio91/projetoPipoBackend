@@ -38,7 +38,7 @@ namespace Projeto.Application.Services
 
         public Funcionario Update(FuncionarioEdicaoModel model)
         {
-            var funcionario = new Funcionario();
+            var funcionario = funcionarioDomainService.GetById(model.IdFuncionario);
             funcionario.IdFuncionario = model.IdFuncionario;
             funcionario.Nome = model.Nome;
             funcionario.Cpf = model.Cpf;
