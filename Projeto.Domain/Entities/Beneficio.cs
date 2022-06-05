@@ -14,8 +14,5 @@ namespace Projeto.Domain.Entities
 
         public Operadora Operadora { get; set; }
         public List<ClienteBeneficio> ClienteBeneficios { get; set; }
-        public List<FuncionarioBeneficio> FuncionarioBeneficios { get; set; }
-
-
     }
 }

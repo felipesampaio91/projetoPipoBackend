@@ -11,7 +11,6 @@ namespace Projeto.Domain.Entities
         public string Cnpj { get; set; }
         public DateTimeOffset DataInclusao { get; set; }
 
-
         public List<Beneficio> Beneficios { get; set; }
     }
 }

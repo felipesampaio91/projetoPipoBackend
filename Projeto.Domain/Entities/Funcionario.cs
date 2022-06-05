@@ -18,10 +18,6 @@ namespace Projeto.Domain.Entities
         public DateTimeOffset DataInclusao { get; set; }
         public int IdCliente { get; set; }
 
-
         public Cliente Cliente { get; set; }
-        public List<FuncionarioBeneficio> FuncionarioBeneficios { get; set; }
-
-
     }
 }

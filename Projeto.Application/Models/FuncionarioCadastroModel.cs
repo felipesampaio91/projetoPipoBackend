@@ -18,11 +18,11 @@ namespace Projeto.Application.Models
 
         public string? DataAdmissao { get; set; }
 
-        public string Endereco { get; set; }
+        public string? Endereco { get; set; }
 
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        public decimal Peso { get; set; }
+        public decimal? Peso { get; set; }
 
         public decimal? Altura { get; set; }
 
