@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220503030415_Initial2.cs" />
-    <Compile Remove="Migrations\20220503030415_Initial2.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="appsettings.json" />
   </ItemGroup>
 
