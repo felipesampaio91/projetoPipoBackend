@@ -32,6 +32,32 @@ Repita o passo anterior e clicando com o botão direito do mouse sobre "Projeto.
 
 ![image](https://user-images.githubusercontent.com/54118555/172031748-f8225596-5f5e-4676-8446-e3c3dd53be66.png)
 
+Instruções para criação da base de dados:
+
+No menu "Exibir" no Visual Studio, selecione a opção "SQL Server Object Explorer". Expanda a base de dados local e clique com o botão direito do mouse sobre a pasta "Databases". Selecione a opção Add New Database.
+
+![image](https://user-images.githubusercontent.com/54118555/172065202-31dc175e-b6cc-40aa-9cd2-d997eaf67648.png)
+
+Dê um nome para a base de dados e finalize a criação clicando em "OK".
+
+![image](https://user-images.githubusercontent.com/54118555/172065300-bde41f05-e678-49ff-9d89-a8e5b284e671.png)
+
+Após a criação da base de dados, clique com o botão direito do mouse sobre a mesma e selecione a opção "Properties".
+
+![image](https://user-images.githubusercontent.com/54118555/172065371-acb9f671-62e8-49a0-9fd4-7136238247ca.png)
+
+Na janela que se abrirá, selecione e copie a propriedade "Connection string", que deve ser semelhante a "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ProjetoPipo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+
+![image](https://user-images.githubusercontent.com/54118555/172065464-4cd224b5-1145-4388-9058-fe016fe86cd2.png)
+
+Após ter copiado a connection string, localize o arquivo "appsettings.json" dentro de "Projeto.Infra.Data", no Gerenciador de Soluções do Visual Studio. Cole a connection string no local onde estão os 3 pontos dentro das aspas duplas conforme a imagem abaixo:
+
+![image](https://user-images.githubusercontent.com/54118555/172065668-41a71d00-d322-4356-beff-c1ccf168c1a4.png)
+
+![image](https://user-images.githubusercontent.com/54118555/172065757-2e6b81bf-32a5-4f6d-b7c8-5f88172230e6.png)
+ 
+Salve todas as alterações.
+
 
 
 Considerações: A API realiza um CRUD (POST, PUT, DELETE, GETALL, GETBYID) para todas as entidades. Sendo elas:
