@@ -1,7 +1,12 @@
-Esta API foi implementada utilizando o padrão DDD em C#.NET CORE 3.1 em conjunto com o o framework de documentação de API's Swagger. 
-A API utiliza o ORM EntityFramework para gerar e mapear as tabelas do banco de dados. A IDE utilizada para desenvolvimento é o Visual Studio 2019 Community.
+Este projeto foi desenvolvido utilizando o padrão DDD, em C#.NET CORE 3.1, em conjunto com o o framework de documentação de API's Swagger. 
+A API utiliza o ORM Entity Framework Core para gerar e mapear as tabelas do banco de dados relacional. A IDE utilizada para desenvolvimento é o Visual Studio 2019 Community.
 
-Instruções para executar o projeto:
+Esta API foi desenvolvida com o objetivo de relacionar os funcionários de uma empresa qualquer com os respectivos benefícios de saúde ofertados por esta empresa.
+Considerações e implicações que foram feitas durante o desenvolvimento da API encontram-se no final deste documento.
+
+A escolha do C#.NET CORE se deu devido a uma maior familiaridade com a tecnologia, que já é bem estabelecida no mercado de desenvolvimento, e possui vasta documentação oficial e de terceiros que suportam o desenvolvimento e a resolução de problemas. 
+
+### **Instalação das bibliotecas necessárias:**
 Após o download do projeto, localize o arquivo "ProjetoPipo.sln" na pasta do projeto e abra=o utilizando o Visual Studio conforme a imagem a seguir
 
 ![image](https://user-images.githubusercontent.com/54118555/172031028-298e141c-603a-40fe-8940-cdf5ea8b6f8b.png)
@@ -16,11 +21,11 @@ Clique com o botão direito do mouse sobre o meso e selecione a opção "Gerenci
 
 Na aba procurar pesquise por "Swashbuckle.AspNetCore" e instale na versão 6.3.0 indicada na imagem abaixo:
 
-![image](https://user-images.githubusercontent.com/54118555/172031388-48014d6d-3bb1-4972-9364-d0be86488297.png)
+![image](https://user-images.githubusercontent.com/54118555/172252351-69073505-a985-4eda-9ac3-44536a8cb563.png)
 
 Após a instalação, feche a aba do NuGet e procure "Projeto.Infra.Data" no Gerenciador de Soluções do Visual Studio.
 
-![image](https://user-images.githubusercontent.com/54118555/172031580-7165c91b-5012-45a5-b00e-1471abef8943.png)
+![image](https://user-images.githubusercontent.com/54118555/172253457-f46b7f7b-d2bd-41ad-89b4-b5d528eab0e6.png)
 
 Repita o passo anterior e clicando com o botão direito do mouse sobre "Projeto.Infra.Data" e selecionando "Gerenciar Pacotes do Nuget". Procure e instale os 5 itens a seguir na versão 3.1.8: 
 
@@ -31,7 +36,6 @@ Repita o passo anterior e clicando com o botão direito do mouse sobre "Projeto.
 - Microsoft.Extensions.Configuration.Json
 
 ![image](https://user-images.githubusercontent.com/54118555/172031748-f8225596-5f5e-4676-8446-e3c3dd53be66.png)
-
 
 Após a instalação, feche a aba do NuGet e procure "Projeto.Testes" no Gerenciador de Soluções do Visual Studio.
 
@@ -48,8 +52,7 @@ Procure e instale as seguintes bibliotecas:
 
 Feche a aba do NuGet e salve todas as alterações.
 
-
-Instruções para criação da base de dados:
+### **Instruções para criação da base de dados:**
 
 No menu "Exibir" no Visual Studio, selecione a opção "SQL Server Object Explorer". Expanda a base de dados local e clique com o botão direito do mouse sobre a pasta "Databases". Selecione a opção Add New Database.
 
@@ -75,7 +78,7 @@ Após ter copiado a connection string, localize o arquivo "appsettings.json" den
  
 Salve todas as alterações.
 
-Gerando as tabelas no banco de dados através do Entity Framework Core:
+### **Gerando as tabelas no banco de dados através do Entity Framework Core:**
 
 No menu exibir, selecione a opção "Console do Gerenciador de Pacotes"
 
@@ -107,6 +110,8 @@ Altere o projeto de inicialização para "Projeto.Presentation"  seguindo as ins
 
 ![image](https://user-images.githubusercontent.com/54118555/172178259-1db2f265-ff4e-4e62-a614-637a491bf612.png)
 
+### **Execução do projeto:**
+
 Execute o projeto clicando no botão "IIS Express".
 
 ![image](https://user-images.githubusercontent.com/54118555/172178682-accfbd71-979f-4a67-b295-36f0fb82ec93.png)
@@ -117,22 +122,48 @@ Uma nova janela do seu navegador padrão será aberta com a seguinte exibição:
 
 Nessa janela é possível visualizar e testar as operações de CRUD para todas as entidades que compõem o projeto. Sendo elas:
 
-Operadora: É a empresa responsável por fonecer o benefício. É possível cadastrar, alterar, listar e apagar todas a operadoras salvas na base de dados. Para esta entidade
-os campos Nome e CNPJ foram considerados obrigatórios para inserção e edição.
+**Operadora:** É a empresa responsável por fonecer o benefício. É possível cadastrar, alterar, listar e apagar todas a operadoras salvas na base de dados. Para esta entidade os campos Nome e CNPJ foram considerados obrigatórios para inserção e edição. Para o INSERT dessa entidade foi implementado uma validação que verifica se o CNPJ cadastrado é único no banco de dados.
 
-Cliente: É a empresa que oferece o benefício pertencente à uma operadora. É possível cadastrar, alterar, listar e apagar todas os clientes salvos na base de dados. 
-Para esta entidade os campos Nome e CNPJ foram considerados obrigatórios para inserção e edição.
+**Cliente:** É a empresa que oferece o benefício pertencente à uma operadora. É possível cadastrar, alterar, listar e apagar todas os clientes salvos na base de dados. 
+Para esta entidade os campos Nome e CNPJ foram considerados obrigatórios para inserção e edição. Para o INSERT dessa entidade foi implementado uma validação que verifica se o CNPJ cadastrado é único no banco de dados.
 
-Beneficio: Pertence a uma operadora e é oferecido por um cliente a seus funcionários. É possível cadastrar, alterar, listar e apagar todas os benefícios salvos na base 
-de dados. Para esta entidade os campos Nome e IdOperadora (identificador da operadora na base de dados), foram considerados obrigatórios para inserção e edição.
+**Beneficio:** Pertence a uma operadora e é oferecido por um cliente a seus funcionários. É possível cadastrar, alterar, listar e apagar todas os benefícios salvos na base de dados. Para esta entidade os campos Nome e IdOperadora (identificador da operadora na base de dados), foram considerados obrigatórios para inserção e edição.
 
-Funcionario: É a entidade a qual se atribui o benefício e pertence a um cliente. É possível cadastrar, alterar, listar e apagar todas os funcionários salvos na base 
-de dados. Para esta entidade os campos Nome, CPF e IdCliente (identificador do cliente na base de dados), foram considerados obrigatórios para inserção e edição.
+**Funcionario:** É a entidade a qual se atribui o benefício e pertence a um cliente. É possível cadastrar, alterar, listar e apagar todas os funcionários salvos na base de dados. Para esta entidade os campos Nome, CPF e IdCliente (identificador do cliente na base de dados), foram considerados obrigatórios para inserção e edição. Para o INSERT dessa entidade foi implementado uma validação que verifica se o CPF cadastrado é único no banco de dados.
 
-ClienteBeneficio: Entidade responsável por criar o vínculo entre benefício e empresa (cliente) no banco de dados. É possível cadastrar, alterar, listar e apagar todos os registros dessa entidade. Sendo obrigatórios os campos idClinete e idBeneficio.
+**ClienteBeneficio:** Entidade responsável por criar o vínculo entre benefício e empresa (cliente) no banco de dados. É possível cadastrar, alterar, listar e apagar todos os registros dessa entidade. Sendo obrigatórios os campos idClinete e idBeneficio.
 
 
-Considerações: A API realiza um CRUD (POST, PUT, DELETE, GETALL, GETBYID) para todas as entidades. Sendo elas:
+### **Considerações:**
+
+O projeto foi desenvolvido pensando na ideia de que existem dois perfis. Um administrador, responsável pelo sistema, que ficaria encarregado de cadastrar as operadoras que oferecem os benefícios de saúde, os benefícios de saúde, os clientes que oferecem esses benefícios aos seus funcionários e o vínculo entre os clientes e os benefícios. 
+
+Desta forma o administrador primeiro cadastra todas as operadoras no sistema. No nosso pitch não são mencionados os nomes das operadoras, apenas os nomes dos clientes e dos benefícios. Então para o cadastro de operadoras utilizou-se nomes e CNPJ's fictícios. Existe nesse método uma validação que verifica se o CNPJ já foi cadastrado no sistema.
+Obs: Pode-se assumir para fins de praticidade que uma única operadora é responsável por todos os benefícios do pitch.
+Abaixo segue um exemplo de requisição POST para inserção de operadora no sistema:
+
+![image](https://user-images.githubusercontent.com/54118555/172261785-4ea0e3a3-9e31-4f7c-956a-450840a4b346.png)
+
+Após o cadastro de operadoras o administrador deve cadastrar os benefícios oferecidos pelas operadoras. No nosso pitch temos 4 benefícios, sendo eles:
+1) Plano de Saúde NorteEuropa;
+2) Plano de Saúde Pampulha Intermédica;
+3) Plano Dental Sorriso;
+4) Plano de Saúde Mental Mente Sã, Corpo São.
+
+No cadastro de benefícios os administrador deverá inserir o id da operadora responsável pelo benefício conforme o exemplo de requisição POST a seguir:
+
+![image](https://user-images.githubusercontent.com/54118555/172262175-c82c24ff-bfff-4f69-8942-3e3f18f39f07.png)
+
+Após terminada as etapas anteriores prosseguimos com o cadastro dos clientes. Esta etapa pode vir antes ou depois das etapas anteriores, visto que o cadastro de clientes não necessita de nenhum dado de outra entidade.
+Para o cadastro de clientes assumiu-se que é obrigatório informar um nome e um CNPJ conforme a requisição POST a seguir:
+
+![image](https://user-images.githubusercontent.com/54118555/172262879-c5bd2131-4bea-4b90-9a10-1a4ff9d3fb04.png)
+
+No nosso pitch temos dois clientes:
+1) Acme Co;
+2) Tio Patinhas Bank.
+
+E para cadstro desses clientes apenas devemos gerar um CNPJ válido. Assim como no método POST da entidade Operadora, também existe uma validação de CNPJ único no sistema.
 
 
 
