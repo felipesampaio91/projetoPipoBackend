@@ -32,6 +32,23 @@ Repita o passo anterior e clicando com o botão direito do mouse sobre "Projeto.
 
 ![image](https://user-images.githubusercontent.com/54118555/172031748-f8225596-5f5e-4676-8446-e3c3dd53be66.png)
 
+
+Após a instalação, feche a aba do NuGet e procure "Projeto.Testes" no Gerenciador de Soluções do Visual Studio.
+
+![image](https://user-images.githubusercontent.com/54118555/172175082-fb572d5a-38a4-4b8c-a54b-2eaf0fc7d182.png)
+
+Repita o passo anterior e clicando com o botão direito do mouse sobre "Projeto.Testes" e selecionando "Gerenciar Pacotes do Nuget".
+Procure e instale as seguintes bibliotecas:
+- xunit 2.4.0
+- FluentAssertions 3.0.107
+
+![image](https://user-images.githubusercontent.com/54118555/172177265-be0048d4-8a72-4c39-824a-98579f9150f7.png)
+
+![image](https://user-images.githubusercontent.com/54118555/172177424-04385dc9-cd1f-4807-ab84-c73af0ae9140.png)
+
+Feche a aba do NuGet e salve todas as alterações.
+
+
 Instruções para criação da base de dados:
 
 No menu "Exibir" no Visual Studio, selecione a opção "SQL Server Object Explorer". Expanda a base de dados local e clique com o botão direito do mouse sobre a pasta "Databases". Selecione a opção Add New Database.
@@ -58,9 +75,47 @@ Após ter copiado a connection string, localize o arquivo "appsettings.json" den
  
 Salve todas as alterações.
 
+Gerando as tabelas no banco de dados através do Entity Framework Core:
 
+No menu exibir, selecione a opção "Console do Gerenciador de Pacotes"
 
-Considerações: A API realiza um CRUD (POST, PUT, DELETE, GETALL, GETBYID) para todas as entidades. Sendo elas:
+![image](https://user-images.githubusercontent.com/54118555/172170294-f2446d89-6b3f-479c-8f63-4e7378c9c04d.png)
+
+No console que será exibido, altere o projeto padrão conforme a imagem a seguir:
+
+![image](https://user-images.githubusercontent.com/54118555/172171556-53783d62-0931-4f4b-a8c1-ff0a09da55b4.png)
+
+Altere também o projeto de inicialização, selecionando a caixa de diálogo como na imagem a seguir:
+
+![image](https://user-images.githubusercontent.com/54118555/172172055-c9d92726-adf8-4995-8694-00ea38aded81.png)
+
+Ou clicando com o botão direito do mouse sobre "Projeto.Infra.Data" no Gerenciador de Soluções do Visual Studio e selecionando a opção "Definir como projeto de inicialização".
+
+![image](https://user-images.githubusercontent.com/54118555/172172545-49f04f86-5aed-4c3e-b242-4eedef37e0f4.png)
+
+Após isso execute os seguintes comandos:
+- Add-Migration Initial
+- Update-Database Initial
+
+"Initial" é o nome dado ao migration e pode ser qualquer diferente do exposto acima.
+
+Após a execução dos comandos será possível visualizar as tabelas criadas na base de dados através do "SQL Server Object Explorer" conforme a seguir:
+
+![image](https://user-images.githubusercontent.com/54118555/172173712-6071dbad-4cdf-4602-a5f9-10a8681d9a3c.png)
+
+Altere o projeto de inicialização para "Projeto.Presentation"  seguindo as instruções anteriores.
+
+![image](https://user-images.githubusercontent.com/54118555/172178259-1db2f265-ff4e-4e62-a614-637a491bf612.png)
+
+Execute o projeto clicando no botão "IIS Express".
+
+![image](https://user-images.githubusercontent.com/54118555/172178682-accfbd71-979f-4a67-b295-36f0fb82ec93.png)
+
+Uma nova janela do seu navegador padrão será aberta com a seguinte exibição:
+
+![image](https://user-images.githubusercontent.com/54118555/172179433-94822c21-258b-4311-9778-af45bf56e11a.png)
+
+Nessa janela é possível visualizar e testar as operações de CRUD para todas as entidades que compõem o projeto. Sendo elas:
 
 Operadora: É a empresa responsável por fonecer o benefício. É possível cadastrar, alterar, listar e apagar todas a operadoras salvas na base de dados. Para esta entidade
 os campos Nome e CNPJ foram considerados obrigatórios para inserção e edição.
@@ -74,8 +129,12 @@ de dados. Para esta entidade os campos Nome e IdOperadora (identificador da oper
 Funcionario: É a entidade a qual se atribui o benefício e pertence a um cliente. É possível cadastrar, alterar, listar e apagar todas os funcionários salvos na base 
 de dados. Para esta entidade os campos Nome, CPF e IdCliente (identificador do cliente na base de dados), foram considerados obrigatórios para inserção e edição.
 
-ClienteBeneficio: Entidade responsável por criar o vínculo entre benefício e empresa (cliente) no banco de dados. É possível cadastrar, alterar, listar e apagar todos os 
-registros dessa entidade. Sendo obrigatórios os campos idClinete e idBeneficio.
+ClienteBeneficio: Entidade responsável por criar o vínculo entre benefício e empresa (cliente) no banco de dados. É possível cadastrar, alterar, listar e apagar todos os registros dessa entidade. Sendo obrigatórios os campos idClinete e idBeneficio.
+
+
+Considerações: A API realiza um CRUD (POST, PUT, DELETE, GETALL, GETBYID) para todas as entidades. Sendo elas:
+
+
 
 A validação de inclusão de benefícios para funcionários foi implementada na camada Projeto.Presentation da API, na entidade "FuncionarioBeneficioController.cs".
 
