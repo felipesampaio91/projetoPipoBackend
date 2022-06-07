@@ -218,5 +218,4 @@ O cadastro de funcionários foi pensado para ser utilizado por um perfil para cl
 
 O campos obrigatórios para esse serviço são: Nome, CPF e id do cliente. Os outros campos se tornarão obrigatórios dependendo dos benefícios oferecidos pela empresa do funcionário.
 
-
-Como parte de uma rastreabilidade em base de dados, foi inserido um parâmetro "DataInclusao" em todas as entidades que é um parâmetro obrigatório. Este parâmetro é gerado pelo sistema automaticamente.
+Como parte de uma rastreabilidade em base de dados, foi inserido um parâmetro "DataInclusao" em todas as entidades, sendo este um parâmetro obrigatório. Este parâmetro é gerado pelo sistema automaticamente.
