@@ -17,17 +17,17 @@ namespace Projeto.Domain.Services
             this.operadoraRepository = operadoraRepository;
         }
 
-        //public override Operadora Insert(Operadora obj)
-        //{
-        //    if (operadoraRepository.GetByCnpj(obj.Cnpj) == null)
-        //    {
-        //        operadoraRepository.Insert(obj);
-        //        return obj;
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("CNPJ já cadastrado!");
-        //    }
-        //}
+        public override Operadora Insert(Operadora obj)
+        {
+            if (operadoraRepository.GetByCnpj(obj.Cnpj) == null)
+            {
+                operadoraRepository.Insert(obj);
+                return obj;
+            }
+            else
+            {
+                throw new Exception("cnpj já cadastrado!");
+            }
+        }
     }
 }

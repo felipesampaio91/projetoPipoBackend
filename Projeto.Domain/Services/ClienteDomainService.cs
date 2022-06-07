@@ -17,17 +17,17 @@ namespace Projeto.Domain.Services
             this.clienteRepository = clienteRepository;
         }
 
-        //public override Cliente Insert(Cliente obj)
-        //{
-        //    if (clienteRepository.GetByCnpj(obj.Cnpj) == null)
-        //    {
-        //        clienteRepository.Insert(obj);
-        //        return obj;
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("CNPJ já cadastrado!");
-        //    }
-        //}
+        public override Cliente Insert(Cliente obj)
+        {
+            if (clienteRepository.GetByCnpj(obj.Cnpj) == null)
+            {
+                clienteRepository.Insert(obj);
+                return obj;
+            }
+            else
+            {
+                throw new Exception("CNPJ já cadastrado!");
+            }
+        }
     }
 }

@@ -25,8 +25,7 @@ namespace Projeto.Domain.Services
 
             if (funcionarioRepository.GetByCpf(obj.Cpf) == null)
             {
-                //pegando a relacao de beneficios oferecida depelo cliente
-                // var benficiosCliente = new List<ClienteBeneficio>();
+                //pegando a relacao de beneficios oferecida pelo cliente
                 var benficiosCliente = funcionarioRepository.GetBeneficioByIdCliente(obj.IdCliente);
 
                 if (benficiosCliente != null)
