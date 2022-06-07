@@ -1,4 +1,4 @@
-Este projeto foi desenvolvido utilizando o padrão DDD, em C#.NET CORE 3.1, em conjunto com o o framework de documentação de API's Swagger. 
+Este projeto foi desenvolvido utilizando o padrão de clean architecture conhecido como DDD (Domain Driven Design), em C#.NET CORE 3.1, em conjunto com o o framework de documentação de API's Swagger. 
 A API utiliza o ORM Entity Framework Core para gerar e mapear as tabelas do banco de dados relacional. A IDE utilizada para desenvolvimento é o Visual Studio 2019 Community.
 
 Esta API foi desenvolvida com o objetivo de gerenciar serviços de assistência na área de saúde, permitindo a inserção, edição, consulta e exclusão de benefícios, operadoras de saúde, clientes e funcionários.
