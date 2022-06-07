@@ -22,7 +22,7 @@ namespace Projeto.Application.Services
             var funcionario = new Funcionario();
             funcionario.Nome = model.Nome;
             funcionario.Cpf = model.Cpf;
-            funcionario.DataAdmissao = DateTime.Parse(model.DataAdmissao);
+            funcionario.DataAdmissao = model.DataAdmissao;
             funcionario.Endereco = model.Endereco;
             funcionario.Email = model.Email;
             funcionario.IdCliente = model.IdCliente;
@@ -42,7 +42,7 @@ namespace Projeto.Application.Services
             funcionario.IdFuncionario = model.IdFuncionario;
             funcionario.Nome = model.Nome;
             funcionario.Cpf = model.Cpf;
-            funcionario.DataAdmissao = DateTime.Parse(model.DataAdmissao);
+            funcionario.DataAdmissao = model.DataAdmissao;
             funcionario.Endereco = model.Endereco;
             funcionario.Email = model.Email;
             funcionario.IdCliente = model.IdCliente;

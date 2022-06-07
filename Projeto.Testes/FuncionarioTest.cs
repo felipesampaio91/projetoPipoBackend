@@ -61,7 +61,7 @@ namespace Projeto.Testes
             var modelFuncionario = new FuncionarioCadastroModel();
             modelFuncionario.Nome = "Funcionario Teste";
             modelFuncionario.Cpf = "23020433088";
-            modelFuncionario.DataAdmissao = "20/01/1992";
+            modelFuncionario.DataAdmissao = DateTime.Parse("22/02/1992");
             modelFuncionario.Endereco = "Endereço teste";
             modelFuncionario.Email = "teste@email.com";
             modelFuncionario.Peso = 90.5M;
@@ -115,7 +115,7 @@ namespace Projeto.Testes
             var modelFuncionario = new FuncionarioCadastroModel();
             modelFuncionario.Nome = "Funcionario Teste";
             modelFuncionario.Cpf = "55115299070";
-            modelFuncionario.DataAdmissao = "20/01/1992";
+            modelFuncionario.DataAdmissao = DateTime.Parse("20/01/1992");
             modelFuncionario.Endereco = "Endereço teste";
             modelFuncionario.Email = "teste@email.com";
             modelFuncionario.Peso = 85.5M;
@@ -143,7 +143,7 @@ namespace Projeto.Testes
             modelFuncionarioEdicao.IdFuncionario = responseFuncionarioCadastro.funcionario.IdFuncionario;
             modelFuncionarioEdicao.Nome = "Funcionario Teste Edição";
             modelFuncionarioEdicao.Cpf = "47843604090";
-            modelFuncionarioEdicao.DataAdmissao = "20/01/1992";
+            modelFuncionarioEdicao.DataAdmissao = DateTime.Parse("20/01/1992");
             modelFuncionarioEdicao.Endereco = "Endereço teste";
             modelFuncionarioEdicao.Email = "teste@email.com";
             modelFuncionarioEdicao.Peso = 90.5M;
@@ -196,7 +196,7 @@ namespace Projeto.Testes
             var modelFuncionario = new FuncionarioCadastroModel();
             modelFuncionario.Nome = "Funcionario Teste";
             modelFuncionario.Cpf = "43800585065";
-            modelFuncionario.DataAdmissao = "20/01/1992";
+            modelFuncionario.DataAdmissao = DateTime.Parse("20/01/1992");
             modelFuncionario.Endereco = "Endereço teste";
             modelFuncionario.Email = "teste@email.com";
             modelFuncionario.Peso = 85.5M;
@@ -262,7 +262,7 @@ namespace Projeto.Testes
             var modelFuncionario = new FuncionarioCadastroModel();
             modelFuncionario.Nome = "Funcionario Teste";
             modelFuncionario.Cpf = "65085485068";
-            modelFuncionario.DataAdmissao = "20/01/1992";
+            modelFuncionario.DataAdmissao = DateTime.Parse("20/01/1992");
             modelFuncionario.Endereco = "Endereço teste";
             modelFuncionario.Email = "teste@email.com";
             modelFuncionario.Peso = 85.5M;
@@ -331,7 +331,7 @@ namespace Projeto.Testes
             var modelFuncionario = new FuncionarioCadastroModel();
             modelFuncionario.Nome = "Funcionario Teste";
             modelFuncionario.Cpf = "69262615043";
-            modelFuncionario.DataAdmissao = "20/01/1992";
+            modelFuncionario.DataAdmissao = DateTime.Parse("20/01/1992");
             modelFuncionario.Endereco = "Endereço teste";
             modelFuncionario.Email = "teste@email.com";
             modelFuncionario.Peso = 85.5M;

@@ -28,7 +28,7 @@ namespace Projeto.Domain.Services
                 //pegando a relacao de beneficios oferecida pelo cliente
                 var benficiosCliente = funcionarioRepository.GetBeneficioByIdCliente(obj.IdCliente);
 
-                if (benficiosCliente != null)
+                if (benficiosCliente.Count != 0)
                 {
                     foreach (var beneficioCliente in benficiosCliente)
                     {
@@ -36,32 +36,33 @@ namespace Projeto.Domain.Services
                         var beneficio = new Beneficio();
                         beneficio = beneficioRepository.GetById(beneficioCliente.IdBeneficio);
 
-                        var nome = beneficio.Nome;
+                        var beneficioNome = beneficio.Nome;
+                        
                         //validacao dos dados do funcionario com base no beneficio oferecido pela empresa
-                        switch (beneficio.Nome)//poderia utilizar o cnpj da empresa ao inves do nome
+                        switch (beneficioNome.ToLower())
                         {
-                            case "Plano de Saúde Norte Europa":
+                            case "plano de saúde norte europa":
                                 if (obj.DataAdmissao == null || obj.Email == "")
                                 {
                                     throw new Exception("Para este benefício os campos 'Data de admissão' e 'e-mail' devem estar preenchidos no cadastro do funcionário.");
                                 }
                                 break;
 
-                            case "Plano de saúde Pampulha Intermédica":
+                            case "plano de saúde pampulha intermédica":
                                 if (obj.DataAdmissao == null || obj.Endereco == "")
                                 {
                                     throw new Exception("Para este benefício os campos 'Data de admissão' e 'endereço' devem estar preenchidos no cadastro do funcionário.");
                                 }
                                 break;
 
-                            case "Plano odontológico Dental Sorriso":
+                            case "plano odontológico dental sorriso":
                                 if (obj.Peso == 0 || obj.Peso == null || obj.Altura == 0 || obj.Altura == null)
                                 {
                                     throw new Exception("Para este benefício os campos 'peso' e 'altura' devem estar preenchidos no cadastro do funcionário.");
                                 }
                                 break;
 
-                            case "Plano de saúde mental Mente Sã, Corpo São":
+                            case "plano de saúde mental mente sã, corpo são":
                                 if (obj.HorasMeditadas == null)
                                 {
                                     throw new Exception("Para este benefício o campo 'horas meditadas' deve estar preenchido no cadastro do funcionário.");

@@ -20,7 +20,7 @@ namespace Projeto.Application.Models
         [Required(ErrorMessage = "Informe o CPF do funcionário.")]
         public string Cpf { get; set; }
 
-        public string? DataAdmissao { get; set; }
+        public DateTime? DataAdmissao { get; set; }
 
         public string? Endereco { get; set; }
 
